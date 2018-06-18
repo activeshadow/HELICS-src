@@ -1,5 +1,5 @@
-/*
-Copyright © 2017-2018,
+ï»¿/*
+Copyright ï¿½ 2017-2018,
 Battelle Memorial Institute; Lawrence Livermore National Security, LLC; Alliance for Sustainable Energy, LLC
 All rights reserved. See LICENSE file and DISCLAIMER for more details.
 */
@@ -58,6 +58,7 @@ BOOST_DATA_TEST_CASE(message_reroute_filter_object1, bdata::make(core_types), co
 	fFed->requestTime(1.0);
 	mFed->requestTimeComplete();
 
+	BOOST_CHECK(!mFed->hasMessage(p2));
 	BOOST_REQUIRE(mFed->hasMessage(p3));
 
 	auto m2 = mFed->getMessage(p3);
@@ -77,8 +78,8 @@ BOOST_DATA_TEST_CASE(message_reroute_filter_object1, bdata::make(core_types), co
 
 /**
 Test rerouter filter under condition
-This test case sets reroute filter on a source endpoint with a condition parameter. 
-Ths means message sent from this endpoint will be rerouted to a new destination 
+This test case sets reroute filter on a source endpoint with a condition parameter.
+Ths means message sent from this endpoint will be rerouted to a new destination
 endpoint only if condition matches.
 */
 
@@ -112,7 +113,7 @@ BOOST_DATA_TEST_CASE(message_reroute_filter_condition, bdata::make(core_types), 
 	mFed->requestTimeAsync(1.0);
 	fFed->requestTime(1.0);
 	mFed->requestTimeComplete();
-
+	BOOST_CHECK(!mFed->hasMessage(p2));
 	BOOST_REQUIRE(mFed->hasMessage(p3));
 	auto m2 = mFed->getMessage(p3);
 
@@ -148,12 +149,12 @@ BOOST_DATA_TEST_CASE(message_reroute_filter_object2, bdata::make(core_types), co
 	auto p2 = mFed->registerGlobalEndpoint("port2");
 	auto p3 = mFed->registerGlobalEndpoint("port3");
 
-    auto f1 = fFed->registerSourceFilter("filter1", "port1");
-    auto filter_op = std::make_shared<helics::RerouteFilterOperation>();
-    filter_op->setString("newdestination", "port3");
-    filter_op->setString("condition", "test"); //match all messages with a destination endpoint starting with "test"
+	auto f1 = fFed->registerSourceFilter("filter1", "port1");
+	auto filter_op = std::make_shared<helics::RerouteFilterOperation>();
+	filter_op->setString("newdestination", "port3");
+	filter_op->setString("condition", "test"); //match all messages with a destination endpoint starting with "test"
 
-    fFed->setFilterOperator(f1, filter_op->getOperator());
+	fFed->setFilterOperator(f1, filter_op->getOperator());
 
 	fFed->enterExecutionStateAsync();
 	mFed->enterExecutionState();
@@ -166,10 +167,10 @@ BOOST_DATA_TEST_CASE(message_reroute_filter_object2, bdata::make(core_types), co
 	mFed->requestTimeAsync(1.0);
 	fFed->requestTime(1.0);
 	mFed->requestTimeComplete();
-    //this one was delivered to the original destination
+	//this one was delivered to the original destination
 	BOOST_REQUIRE(mFed->hasMessage(p2));
-	
-    //this message should be delivered to the rerouted destination
+
+	//this message should be delivered to the rerouted destination
 	mFed->sendMessage(p1, "test324525", data);
 
 	mFed->requestTimeAsync(2.0);
@@ -216,34 +217,32 @@ BOOST_DATA_TEST_CASE(message_random_drop_object, bdata::make(core_types), core_t
 	fFed->enterExecutionStateComplete();
 
 	BOOST_CHECK(fFed->getCurrentState() == helics::Federate::op_states::execution);
-	helics::data_block data(500, 'a');
+	helics::data_block data(100, 'a');
 
 	double timestep = 0.0; // 1 second
-	int max_iterations = 300;
+	int max_iterations = 200;
 	int dropped = 0;
 	for (int i = 0; i < max_iterations; i++) {
 		mFed->sendMessage(p1, "port2", data);
-		timestep+=1.0;
-		mFed->requestTimeAsync(timestep);
-		fFed->requestTime(timestep);
-		mFed->requestTimeComplete();
+		timestep += 1.0;
+		mFed->requestTime(timestep);
 		// Check if message is received
 		if (!mFed->hasMessage(p2)) {
 			dropped++;
-            
-		}
-        else
-        {
-            mFed->getMessage(p2);
-        }
-	}
-    auto iterations = static_cast<double>(max_iterations);
-    double pest = static_cast<double>(dropped) / iterations;
-    //this should result in an expected error of 1 in 10K tests
-    double ebar = 4.0*std::sqrt(drop_prob*(1.0 - drop_prob) / iterations);
 
-    BOOST_CHECK_GE(pest, drop_prob - ebar);
-    BOOST_CHECK_LE(pest, drop_prob + ebar);
+		}
+		else
+		{
+			mFed->getMessage(p2);
+		}
+	}
+	auto iterations = static_cast<double>(max_iterations);
+	double pest = static_cast<double>(dropped) / iterations;
+	//this should result in an expected error of 1 in 10K tests
+	double ebar = 4.0*std::sqrt(drop_prob*(1.0 - drop_prob) / iterations);
+
+	BOOST_CHECK_GE(pest, drop_prob - ebar);
+	BOOST_CHECK_LE(pest, drop_prob + ebar);
 	mFed->finalize();
 	fFed->finalize();
 	BOOST_CHECK(fFed->getCurrentState() == helics::Federate::op_states::finalize);
@@ -277,34 +276,32 @@ BOOST_DATA_TEST_CASE(message_random_drop_object1, bdata::make(core_types), core_
 	fFed->enterExecutionStateAsync();
 	mFed->enterExecutionState();
 	fFed->enterExecutionStateComplete();
-	
+
 	BOOST_CHECK(fFed->getCurrentState() == helics::Federate::op_states::execution);
-	helics::data_block data(500, 'a');
+	helics::data_block data(100, 'a');
 
 	double timestep = 0.0; // 1 second
-	int max_iterations = 12;
+	int max_iterations = 150;
 	int count = 0;
 	for (int i = 0; i < max_iterations; i++) {
 		mFed->sendMessage(p1, "port2", data);
-		timestep+=1.0;
-		mFed->requestTimeAsync(timestep);
-		fFed->requestTime(timestep);
-		mFed->requestTimeComplete();
+		timestep += 1.0;
+		mFed->requestTime(timestep);
 		// Check if message is received
 		if (mFed->hasMessage(p2)) {
 			count++;
-            mFed->getMessage(p2);
+			mFed->getMessage(p2);
 		}
 	}
-    auto iterations = static_cast<double>(max_iterations);
-    double pest = 1.0 - static_cast<double>(count) / iterations;
-    //this should result in an expected error of 1 in 10K tests
-    double ebar = 4.0*std::sqrt(prob*(1.0 - prob) / iterations);
+	auto iterations = static_cast<double>(max_iterations);
+	double pest = 1.0 - static_cast<double>(count) / iterations;
+	//this should result in an expected error of 1 in 10K tests
+	double ebar = 4.0*std::sqrt(prob*(1.0 - prob) / iterations);
 
-    BOOST_CHECK_GE(pest, prob - ebar);
-    BOOST_CHECK_LE(pest, prob + ebar);
-    mFed->finalize();
-    fFed->finalize();
+	BOOST_CHECK_GE(pest, prob - ebar);
+	BOOST_CHECK_LE(pest, prob + ebar);
+	mFed->finalize();
+	fFed->finalize();
 	BOOST_CHECK(fFed->getCurrentState() == helics::Federate::op_states::finalize);
 }
 
@@ -326,47 +323,45 @@ BOOST_DATA_TEST_CASE(message_random_drop_dest_object, bdata::make(core_types), c
 	auto p1 = mFed->registerGlobalEndpoint("port1");
 	auto p2 = mFed->registerGlobalEndpoint("port2");
 
-	auto Filt = helics::make_destination_filter(helics::defined_filter_types::randomDrop, 
-				fFed.get(), "port2", "filter1");
+	auto Filt = helics::make_destination_filter(helics::defined_filter_types::randomDrop,
+		fFed.get(), "port2", "filter1");
 	double drop_prob = 0.25;
 	Filt->set("dropprob", drop_prob);
 
 	fFed->enterExecutionStateAsync();
 	mFed->enterExecutionState();
 	fFed->enterExecutionStateComplete();
-	
+
 	BOOST_CHECK(fFed->getCurrentState() == helics::Federate::op_states::execution);
-	helics::data_block data(500, 'a');
+	helics::data_block data(100, 'a');
 
 	double timestep = 0.0; // 1 second
-	int max_iterations = 500;
+	int max_iterations = 150;
 	int dropped = 0;
 	for (int i = 0; i < max_iterations; i++) {
 		mFed->sendMessage(p1, "port2", data);
-		timestep+=1.0;
-		//fFed->requestTimeAsync(timestep);
+		timestep += 1.0;
 		mFed->requestTime(timestep);
-		//fFed->requestTimeComplete();
 		// Check if message is received
 		if (!mFed->hasMessage(p2)) {
 			dropped++;
 		}
-        else
-        {
-            //purposely dropping the messages
-            mFed->getMessage(p2);
-        }
+		else
+		{
+			//purposely dropping the messages
+			mFed->getMessage(p2);
+		}
 	}
-    
-    auto iterations = static_cast<double>(max_iterations);
-    double pest = static_cast<double>(dropped) / iterations;
-    //this should result in an expected error of 1 in 10K tests
-    double ebar = 4.0*std::sqrt(drop_prob*(1.0 - drop_prob) / iterations);
 
-	BOOST_CHECK_GE(pest, drop_prob-ebar);
-    BOOST_CHECK_LE(pest, drop_prob+ebar);
-    mFed->finalize();
-    fFed->finalize();
+	auto iterations = static_cast<double>(max_iterations);
+	double pest = static_cast<double>(dropped) / iterations;
+	//this should result in an expected error of 1 in 10K tests
+	double ebar = 4.0*std::sqrt(drop_prob*(1.0 - drop_prob) / iterations);
+
+	BOOST_CHECK_GE(pest, drop_prob - ebar);
+	BOOST_CHECK_LE(pest, drop_prob + ebar);
+	mFed->finalize();
+	fFed->finalize();
 }
 
 /**
@@ -396,39 +391,36 @@ BOOST_DATA_TEST_CASE(message_random_drop_dest_object1, bdata::make(core_types), 
 	fFed->enterExecutionStateAsync();
 	mFed->enterExecutionState();
 	fFed->enterExecutionStateComplete();
-	
+
 	BOOST_CHECK(fFed->getCurrentState() == helics::Federate::op_states::execution);
 	helics::data_block data(500, 'a');
 
 	double timestep = 0.0; // 1 second
-	int max_iterations = 300;
+	int max_iterations = 150;
 	int count = 0;
 	for (int i = 0; i < max_iterations; i++) {
 		mFed->sendMessage(p1, "port2", data);
 		timestep++;
-		mFed->requestTimeAsync(timestep);
-		//fFed->requestTime(timestep);
-		mFed->requestTimeComplete();
-		// Check if message is received
+		mFed->requestTime(timestep);
 		if (mFed->hasMessage(p2)) {
 			count++;
-            mFed->getMessage(p2);
+			mFed->getMessage(p2);
 		}
 	}
-    auto iterations = static_cast<double>(max_iterations);
-    double pest = 1.0-static_cast<double>(count) / iterations;
-    //this should result in an expected error of 1 in 10K tests
-    double ebar = 4.0*std::sqrt(prob*(1.0 - prob) / iterations);
+	auto iterations = static_cast<double>(max_iterations);
+	double pest = 1.0 - static_cast<double>(count) / iterations;
+	//this should result in an expected error of 1 in 10K tests
+	double ebar = 4.0*std::sqrt(prob*(1.0 - prob) / iterations);
 
-    BOOST_CHECK_GE(pest, prob - ebar);
-    BOOST_CHECK_LE(pest, prob + ebar);
-    mFed->finalize();
-    fFed->finalize();
+	BOOST_CHECK_GE(pest, prob - ebar);
+	BOOST_CHECK_LE(pest, prob + ebar);
+	mFed->finalize();
+	fFed->finalize();
 }
 
 /**
 Test random delay filter
-This test case sets random delay filter on a source endpoint. 
+This test case sets random delay filter on a source endpoint.
 This means messages may be delayed by random delay based on
 binomial distribution.
 */
@@ -444,18 +436,18 @@ BOOST_DATA_TEST_CASE(message_random_delay_object, bdata::make(core_types), core_
 	auto p1 = mFed->registerGlobalEndpoint("port1");
 	auto p2 = mFed->registerGlobalEndpoint("port2");
 
-    auto Filt = helics::make_source_filter(helics::defined_filter_types::randomDelay, fFed.get(), "port1", "filter1");
-    Filt->setString("distribution", "binomial");
+	auto Filt = helics::make_source_filter(helics::defined_filter_types::randomDelay, fFed.get(), "port1", "filter1");
+	Filt->setString("distribution", "binomial");
 
-    Filt->set("param1", 4); //max_delay=4
-    Filt->set("param2", 0.5); //prob
+	Filt->set("param1", 4); //max_delay=4
+	Filt->set("param2", 0.5); //prob
 
 	fFed->enterExecutionStateAsync();
 	mFed->enterExecutionState();
 	fFed->enterExecutionStateComplete();
 
 	BOOST_CHECK(fFed->getCurrentState() == helics::Federate::op_states::execution);
-	helics::data_block data(500, 'a');
+	helics::data_block data(100, 'a');
 	mFed->sendMessage(p1, "port2", data);
 
 	double timestep = 0.0; // 1 second
@@ -464,10 +456,8 @@ BOOST_DATA_TEST_CASE(message_random_delay_object, bdata::make(core_types), core_
 	double actual_delay = 100.0;
 
 	for (int i = 0; i < max_iterations; i++) {
-		timestep++;
-		mFed->requestTimeAsync(timestep);
-		fFed->requestTime(timestep);
-		mFed->requestTimeComplete();
+		timestep += 1.0;
+		mFed->requestTime(timestep);
 		// Check if message is received
 		if (mFed->hasMessage(p2)) {
 			auto m2 = mFed->getMessage(p2);
