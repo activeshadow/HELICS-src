@@ -346,7 +346,7 @@ BOOST_AUTO_TEST_CASE(fast_sender_tests)
         currentTime = vFed2->requestTime(endTime+2000.0);
         if (receiver.isUpdated())
         {
-            printf ("%d <= %d\n", currentTime, endTime);
+            printf ("%u <= %u\n", currentTime, endTime);
             double val = receiver.getValue<double>();
             BOOST_CHECK_EQUAL(val, static_cast<double>(currentTime));
         }
