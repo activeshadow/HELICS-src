@@ -476,6 +476,222 @@ BOOST_DATA_TEST_CASE(message_random_delay_object, bdata::make(core_types), core_
 	BOOST_CHECK(fFed->getCurrentState() == helics::Federate::op_states::finalize);
 }
 
+/**
+Test random delay filter
+This test case tests random delay filter for two type of distributions - geometric and uniform.
+The filter is applied to source endpoint.
+*/
+BOOST_DATA_TEST_CASE(message_random_delay_geometric_uniform, bdata::make(core_types_single), core_type)
+{
+	auto broker = AddBroker(core_type, 2);
+	AddFederates<helics::MessageFederate>(core_type, 1, broker, 1.0, "source");
+	AddFederates<helics::MessageFederate>(core_type, 1, broker, 1.0, "geo");
+
+	auto fFed = GetFederateAs<helics::MessageFederate>(0);
+	auto mFed = GetFederateAs<helics::MessageFederate>(1);
+	auto uFed = GetFederateAs<helics::MessageFederate>(1);
+
+	auto p1 = mFed->registerGlobalEndpoint("port1");
+	auto p2 = mFed->registerGlobalEndpoint("port2");
+	auto p3 = mFed->registerGlobalEndpoint("port3");
+
+	auto geoFilt = helics::make_source_filter(helics::defined_filter_types::randomDelay, fFed.get(), "port1", "filter1");
+	geoFilt->setString("distribution", "geometric");
+	geoFilt->set("param1", 0.7); //prob
+
+	auto uniFilt = helics::make_source_filter(helics::defined_filter_types::randomDelay, fFed.get(), "port1", "filter2");
+	uniFilt->setString("distribution", "uniform");
+	uniFilt->set("min", 0.0); //min
+	uniFilt->set("max", 1.0); //max
+
+	fFed->enterExecutionStateAsync();
+	mFed->enterExecutionState();
+	fFed->enterExecutionStateComplete();
+
+	BOOST_CHECK(fFed->getCurrentState() == helics::Federate::op_states::execution);
+	helics::data_block data(100, 'a');
+	helics::data_block data2(100, 'x');
+	mFed->sendMessage(p1, "port2", data);
+	mFed->sendMessage(p1, "port3", data2);
+
+	double timestep = 0.0; // 1 second
+	int max_iterations = 4;
+	int count1 = 0;
+	int count2 = 0;
+	double actual_delay1 = 100.0;
+	double actual_delay2 = 100.0;
+
+	for (int i = 0; i < max_iterations; i++) {
+		timestep += 1.0;
+		mFed->requestTime(timestep);
+		// Check if message is received
+		if (mFed->hasMessage(p2)) {
+			auto m2 = mFed->getMessage(p2);
+			BOOST_CHECK_EQUAL(m2->source, "port1");
+			BOOST_CHECK_EQUAL(m2->dest, "port2");
+			BOOST_CHECK_EQUAL(m2->data.size(), data.size());
+			actual_delay1 = m2->time;
+			count1++;
+		}
+		// Check if message is received
+		if (mFed->hasMessage(p3)) {
+			auto m3 = mFed->getMessage(p3);
+			BOOST_CHECK_EQUAL(m3->source, "port1");
+			BOOST_CHECK_EQUAL(m3->dest, "port3");
+			BOOST_CHECK_EQUAL(m3->data.size(), data.size());
+			actual_delay2 = m3->time;
+			count2++;
+		}
+	}
+
+	BOOST_CHECK_EQUAL(count1, 1);
+	BOOST_CHECK(actual_delay1 <= 4);
+	BOOST_CHECK_EQUAL(count2, 1);
+	BOOST_CHECK(actual_delay2 <= 4);
+
+	mFed->finalize();
+	fFed->finalize();
+	BOOST_CHECK(fFed->getCurrentState() == helics::Federate::op_states::finalize);
+}
+
+
+/**
+Test random delay filter
+This test case tests random delay filter for two type of
+distributions - normal and poisson. The filter is applied to source endpoint.
+*/
+BOOST_DATA_TEST_CASE(message_random_delay_normal_poisson_exponential,
+	bdata::make(core_types_single), core_type)
+{
+	auto broker = AddBroker(core_type, 2);
+	AddFederates<helics::MessageFederate>(core_type, 1, broker, 1.0, "source");
+	AddFederates<helics::MessageFederate>(core_type, 1, broker, 1.0, "geo");
+
+	auto fFed = GetFederateAs<helics::MessageFederate>(0);
+	auto mFed = GetFederateAs<helics::MessageFederate>(1);
+	auto uFed = GetFederateAs<helics::MessageFederate>(1);
+
+	auto p1 = mFed->registerGlobalEndpoint("port1");
+	auto p2 = mFed->registerGlobalEndpoint("port2");
+	auto p3 = mFed->registerGlobalEndpoint("port3");
+
+	auto normFilt = helics::make_source_filter(
+		helics::defined_filter_types::randomDelay,
+		fFed.get(), "port1", "normal");
+	normFilt->setString("distribution", "normal");
+	normFilt->set("mean", 5.0); //mean
+	normFilt->set("stddev", 2.0); //stddev
+
+	auto poissonFilt = helics::make_source_filter(
+		helics::defined_filter_types::randomDelay,
+		fFed.get(), "port1", "poisson");
+	poissonFilt->setString("distribution", "poisson");
+	poissonFilt->set("mean", 2.1); //mean
+
+	fFed->enterExecutionStateAsync();
+	mFed->enterExecutionState();
+	fFed->enterExecutionStateComplete();
+
+	BOOST_CHECK(fFed->getCurrentState() == helics::Federate::op_states::execution);
+	helics::data_block data(100, 'a');
+	helics::data_block data2(std::string("This is poisson distribution"));
+	mFed->sendMessage(p1, "port2", data);
+	mFed->sendMessage(p1, "port3", data2);
+
+	double timestep = 0.0; // 1 second
+	int max_iterations = 4;
+	int count1 = 0;
+	int count2 = 0;
+	double actual_delay1 = 100.0;
+	double actual_delay2 = 100.0;
+
+	for (int i = 0; i < max_iterations; i++) {
+		timestep += 1.0;
+		mFed->requestTime(timestep);
+		// Check if message is received
+		if (mFed->hasMessage(p2)) {
+			auto m2 = mFed->getMessage(p2);
+			BOOST_CHECK_EQUAL(m2->source, "port1");
+			BOOST_CHECK_EQUAL(m2->dest, "port2");
+			BOOST_CHECK_EQUAL(m2->data.size(), data.size());
+			actual_delay1 = m2->time;
+			count1++;
+		}
+		// Check if message is received
+		if (mFed->hasMessage(p3)) {
+			auto m3 = mFed->getMessage(p3);
+			BOOST_CHECK_EQUAL(m3->source, "port1");
+			BOOST_CHECK_EQUAL(m3->dest, "port3");
+			BOOST_CHECK_EQUAL(m3->data.size(), data2.size());
+			actual_delay2 = m3->time;
+			count2++;
+		}
+	}
+
+	BOOST_CHECK_EQUAL(count1, 1);
+	BOOST_CHECK(actual_delay1 <= 4);
+	BOOST_CHECK_EQUAL(count2, 1);
+	BOOST_CHECK(actual_delay2 <= 4);
+
+	mFed->finalize();
+	fFed->finalize();
+	BOOST_CHECK(fFed->getCurrentState() == helics::Federate::op_states::finalize);
+}
+
+/**
+Test custom filter
+This test case uses MessageDataOperator as operator for custom filter. It manipulates the
+data in the message.
+*/
+BOOST_DATA_TEST_CASE(message_custom_data, bdata::make(core_types_single), core_type)
+{
+	auto broker = AddBroker(core_type, 2);
+	AddFederates<helics::MessageFederate>(core_type, 1, broker, 1.0, "filter");
+	AddFederates<helics::MessageFederate>(core_type, 1, broker, 1.0, "message");
+
+	auto fFed = GetFederateAs<helics::MessageFederate>(0);
+	auto mFed = GetFederateAs<helics::MessageFederate>(1);
+
+	auto p1 = mFed->registerGlobalEndpoint("port1");
+	auto p2 = mFed->registerGlobalEndpoint("port2");
+
+	auto Filt = helics::make_source_filter(helics::defined_filter_types::custom, fFed.get(), "port1", "filter1");
+	auto dataOperator = std::make_shared<helics::MessageDataOperator>();
+	dataOperator->setDataFunction([](helics::data_view data_in) {
+		const char *str = "this is a test string";
+		data_in = str;
+		return data_in; });
+	fFed->setFilterOperator(fFed->getSourceFilterId("filter1"), dataOperator);
+
+	fFed->enterExecutionStateAsync();
+	mFed->enterExecutionState();
+	fFed->enterExecutionStateComplete();
+
+	BOOST_CHECK(fFed->getCurrentState() == helics::Federate::op_states::execution);
+	helics::data_block data(500, 'a');
+	mFed->sendMessage(p1, "port2", data);
+
+	mFed->requestTimeAsync(1.0);
+	fFed->requestTime(1.0);
+	mFed->requestTimeComplete();
+
+	BOOST_REQUIRE(mFed->hasMessage(p2));
+	helics::data_block expected(std::string("this is a test string"));
+
+	auto m2 = mFed->getMessage(p2);
+	BOOST_CHECK_EQUAL(m2->source, "port1");
+	BOOST_CHECK_EQUAL(m2->dest, "port2");
+	BOOST_CHECK_EQUAL(m2->data.size(), expected.size());
+
+	fFed->requestTimeAsync(2.0);
+	mFed->requestTime(2.0);
+	fFed->requestTimeComplete();
+
+	mFed->finalize();
+	fFed->finalize();
+	BOOST_CHECK(fFed->getCurrentState() == helics::Federate::op_states::finalize);
+}
+
 BOOST_AUTO_TEST_CASE(test_empty)
 {
 
