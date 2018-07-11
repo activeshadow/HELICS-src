@@ -1,0 +1,2834 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>C API Reference &mdash; HELICS-src  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/HELICS_Logo.png"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Tracer" href="../apps/Tracer.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> HELICS-src
+          
+
+          
+            
+            <img src="../_static/HELICS_Logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/windows.html">Windows Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#windows-installers">Windows Installers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#testing">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#building-helics-with-python-support">Building HELICS with python support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/mac.html">Mac Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#install-using-brew">Install using brew</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#install-from-source">Install from source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#id1">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#testing">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#building-helics-with-python-support">Building HELICS with python support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#building-helics-using-gcc-and-python">Building HELICS using gcc and python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#building-helics-with-matlab-support">Building HELICS with MATLAB support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#test-helics-matlab-extension">Test HELICS MATLAB extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/linux.html">Ubuntu Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/linux.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/linux.html#setup">Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../installation/linux.html#notes-for-ubuntu">Notes for Ubuntu</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/linux.html#building-helics-with-python-support">Building HELICS with python support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/linux.html#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/language.html">HELICS with language bindings support</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/language.html#helics-with-python3">HELICS with Python3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/language.html#helics-with-python2">HELICS with Python2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/language.html#helics-with-gcc-and-python3">HELICS with GCC and Python3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/language.html#helics-with-matlab">HELICS with MATLAB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/hello-world.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/python.html">Python Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/java.html">Java Minimal Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/matlab.html">MATLAB</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#building-helics-with-matlab-extension">Building HELICS with matlab extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#build-swig-matlab-source">Build SWIG MATLAB source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#compile-matlab-extension">Compile MATLAB extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#test-helics-matlab-extension">Test HELICS MATLAB extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/terminology.html">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/types-of-federates.html">Types of Federates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/pubsub-vs-message.html">Pub/Sub vs Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/filters.html">Filters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/filters.html#federation">Federation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/filters.html#example-with-delay">Example with delay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/filters.html#example-with-communication-system">Example with communication system</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/interfaces.html">Interfacing with HELICS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide/index.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/style.html">Style Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer-guide/style.html#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/swig.html">Generating SWIG extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/tests.html">Run tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/docs.html">Generating Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/contributing.html">Contributing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer-guide/contributing.html#submitting-a-pull-request">Submitting a Pull Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer-guide/contributing.html#opening-an-issue">Opening an Issue</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../apps/index.html">Apps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Recorder.html">Recorder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Recorder.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Recorder.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Recorder.html#subscriptions">subscriptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Recorder.html#json-configuration">JSON configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Recorder.html#output">output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Recorder.html#map-file-output">Map file output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Player.html">Player</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Player.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Player.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Player.html#publications">publications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Player.html#messages">Messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Player.html#json-configuration">JSON configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Source.html">Source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Source.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Source.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Source.html#publications">publications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Source.html#messages">Messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Source.html#json-configuration">JSON configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/App.html">helics_app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#echo">Echo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#player">Player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#recorder">Recorder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#tracer">Tracer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#broker">Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/cmdArgs.html">Command Line Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Echo.html">Echo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Echo.html#command-line-arguments">Command line arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Tracer.html">Tracer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Tracer.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Tracer.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Tracer.html#subscriptions">subscriptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Tracer.html#json-configuration">JSON configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">C API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gmlc-tdc.github.io/HELICS-src/doxygen/">API Doxygen</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HELICS-src</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>C API Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/c-api-reference/index.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="c-api-reference">
+<h1>C API Reference<a class="headerlink" href="#c-api-reference" title="Permalink to this headline">¶</a></h1>
+<dl class="macro">
+<dt id="c.HELICS_CORE_TYPE_DEFAULT">
+<span class="target" id="api-data_8h_1a5794bc000e5c2babb8b1f1c03ea2ba3a"></span><code class="descname">HELICS_CORE_TYPE_DEFAULT</code><a class="headerlink" href="#c.HELICS_CORE_TYPE_DEFAULT" title="Permalink to this definition">¶</a></dt>
+<dd><p>pick a core type depending on compile configuration usually either ZMQ if available or UDP </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.HELICS_CORE_TYPE_INTERPROCESS">
+<span class="target" id="api-data_8h_1a6789be5a9c15e9263d2b42d9210a0635"></span><code class="descname">HELICS_CORE_TYPE_INTERPROCESS</code><a class="headerlink" href="#c.HELICS_CORE_TYPE_INTERPROCESS" title="Permalink to this definition">¶</a></dt>
+<dd><p>interprocess uses memory mapped files to transfer data (for use when all federates are on the same machine </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.HELICS_CORE_TYPE_IPC">
+<span class="target" id="api-data_8h_1a03dd0b8a2272c0c700e6dba5f8bea2dd"></span><code class="descname">HELICS_CORE_TYPE_IPC</code><a class="headerlink" href="#c.HELICS_CORE_TYPE_IPC" title="Permalink to this definition">¶</a></dt>
+<dd><p>same as INTERPROCESS </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.HELICS_CORE_TYPE_MPI">
+<span class="target" id="api-data_8h_1ae00a27c731ef35f92d81c547ce69e617"></span><code class="descname">HELICS_CORE_TYPE_MPI</code><a class="headerlink" href="#c.HELICS_CORE_TYPE_MPI" title="Permalink to this definition">¶</a></dt>
+<dd><p>use MPI for operation on a parallel cluster </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.HELICS_CORE_TYPE_TCP">
+<span class="target" id="api-data_8h_1a10292524472b983cb4f5d49b20e53a68"></span><code class="descname">HELICS_CORE_TYPE_TCP</code><a class="headerlink" href="#c.HELICS_CORE_TYPE_TCP" title="Permalink to this definition">¶</a></dt>
+<dd><p>use a generic TCP protocol message stream to send messages </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.HELICS_CORE_TYPE_TEST">
+<span class="target" id="api-data_8h_1a409f6c083bee245bb71c18703e894250"></span><code class="descname">HELICS_CORE_TYPE_TEST</code><a class="headerlink" href="#c.HELICS_CORE_TYPE_TEST" title="Permalink to this definition">¶</a></dt>
+<dd><p>use the Test core if all federates are in the same process </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.HELICS_CORE_TYPE_UDP">
+<span class="target" id="api-data_8h_1adb2ed7bf8c03b0caef8af8832b963bb8"></span><code class="descname">HELICS_CORE_TYPE_UDP</code><a class="headerlink" href="#c.HELICS_CORE_TYPE_UDP" title="Permalink to this definition">¶</a></dt>
+<dd><p>use UDP packets to send the data </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.HELICS_CORE_TYPE_ZMQ">
+<span class="target" id="api-data_8h_1a4323807fe5a10af33b33afcd81e5a205"></span><code class="descname">HELICS_CORE_TYPE_ZMQ</code><a class="headerlink" href="#c.HELICS_CORE_TYPE_ZMQ" title="Permalink to this definition">¶</a></dt>
+<dd><p>use the Zero MQ networking protocol </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.HELICS_DATA_TYPE_COMPLEX">
+<span class="target" id="ValueFederate_8h_1a5be524426b520ac1800a97e6e59c2c08"></span><code class="descname">HELICS_DATA_TYPE_COMPLEX</code><a class="headerlink" href="#c.HELICS_DATA_TYPE_COMPLEX" title="Permalink to this definition">¶</a></dt>
+<dd><p>a pair of doubles representing a complex number </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.HELICS_DATA_TYPE_DOUBLE">
+<span class="target" id="ValueFederate_8h_1ab692fc3781eb6175034e36deff1ca6a9"></span><code class="descname">HELICS_DATA_TYPE_DOUBLE</code><a class="headerlink" href="#c.HELICS_DATA_TYPE_DOUBLE" title="Permalink to this definition">¶</a></dt>
+<dd><p>a double precision floating point number </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.HELICS_DATA_TYPE_INT">
+<span class="target" id="ValueFederate_8h_1a8835c228a62781459b91cfa3bd6b6efa"></span><code class="descname">HELICS_DATA_TYPE_INT</code><a class="headerlink" href="#c.HELICS_DATA_TYPE_INT" title="Permalink to this definition">¶</a></dt>
+<dd><p>a 64 bit integer </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.HELICS_DATA_TYPE_RAW">
+<span class="target" id="ValueFederate_8h_1a16583640ebcf17fbf6e044c51255c53d"></span><code class="descname">HELICS_DATA_TYPE_RAW</code><a class="headerlink" href="#c.HELICS_DATA_TYPE_RAW" title="Permalink to this definition">¶</a></dt>
+<dd><p>raw data type </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.HELICS_DATA_TYPE_STRING">
+<span class="target" id="ValueFederate_8h_1a9d698875c20a8fb7a028fd9e4c2b425e"></span><code class="descname">HELICS_DATA_TYPE_STRING</code><a class="headerlink" href="#c.HELICS_DATA_TYPE_STRING" title="Permalink to this definition">¶</a></dt>
+<dd><p>a sequence of characters </p>
+</dd></dl>
+
+<dl class="macro">
+<dt id="c.HELICS_DATA_TYPE_VECTOR">
+<span class="target" id="ValueFederate_8h_1ae4d5e4e6c7d924c3b2d81644926b83ff"></span><code class="descname">HELICS_DATA_TYPE_VECTOR</code><a class="headerlink" href="#c.HELICS_DATA_TYPE_VECTOR" title="Permalink to this definition">¶</a></dt>
+<dd><p>an array of doubles </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv3N6helics15force_iterationE">
+<span class="target" id="namespacehelics_1ac54892cb4463dbe676bc5c10158abf64ae6b174986bbad749905494d88aaa9a35"></span>helics<code class="descclassname">::</code><code class="descname">force_iteration</code> = 1<a class="headerlink" href="#_CPPv3N6helics15force_iterationE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>force an iteration whether it is needed or not </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a019d0e49baf6a308985966f9ed01d790"></span><code class="descname">HELICS_EXPORT helics_broker helicsBrokerClone(helics_broker broker)</code></dt>
+<dd><p>create a new reference to an existing broker</p>
+<p>this will create a new broker object that references the existing broker it must be freed as well <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a new reference to the same broker </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">broker</span></code>: an existing helics_broker </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a7aa728f6740dddd155c72f3a3792a3cc"></span><code class="descname">HELICS_EXPORT helics_status helicsBrokerDisconnect(helics_broker broker)</code></dt>
+<dd><p>disconnect a broker <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration indicating any error condition </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">broker</span></code>: the broker to disconnect </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1ab275d79285f86a8c01aae07efd3b794b"></span><code class="descname">HELICS_EXPORT void helicsBrokerFree(helics_broker broker)</code></dt>
+<dd><p>release the memory associated with a broker </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a0e6ef338ec02bb83c351343d1f3ca110"></span><code class="descname">HELICS_EXPORT helics_status helicsBrokerGetAddress(helics_broker broker, char * address, int maxlen)</code></dt>
+<dd><p>get the network address associated with a broker <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration indicating any error condition </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">broker</span></code>: the broker to query </li>
+<li><code class="docutils literal notranslate"><span class="pre">identifier</span></code>: storage space to place the identifier string </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum space available in identifier </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1ab8b70726b57e0688bf2f56945b013759"></span><code class="descname">HELICS_EXPORT helics_status helicsBrokerGetIdentifier(helics_broker broker, char * identifier, int maxlen)</code></dt>
+<dd><p>get an identifier for the broker <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration indicating any error condition </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">broker</span></code>: the broker to query </li>
+<li><code class="docutils literal notranslate"><span class="pre">identifier</span></code>: storage space to place the identifier string </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum space available in identifier </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a98969c5e7b8d90655432675806d4ca27"></span><code class="descname">HELICS_EXPORT int helicsBrokerIsConnected(helics_broker broker)</code></dt>
+<dd><p>check if a broker is connected a connected broker implies is attached to cores or cores could reach out to communicate return 0 if not connected , something else if it is connected </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a9a3ac905cd2ed2998f0bbaf1ac54a9c3"></span><code class="descname">HELICS_EXPORT void helicsCleanupHelicsLibrary()</code></dt>
+<dd><p>function to do some housekeeping work</p>
+<p>this runs some cleanup routines and tries to close out any residual thread that haven’t been shutdown yet </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a0ef2612264a9dd622427461b623ef935"></span><code class="descname">HELICS_EXPORT void helicsCloseLibrary()</code></dt>
+<dd><p>call when done using the helics library, this function will ensure the threads are closed properly if possible this should be the last call before exiting, </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a9bcb0e80104a7cc90f4c4d7e6d0cf49d"></span><code class="descname">HELICS_EXPORT helics_core helicsCoreClone(helics_core core)</code></dt>
+<dd><p>create a new reference to an existing broker</p>
+<p>this will create a new broker object that references the existing broker it must be freed as well <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a new reference to the same broker </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">broker</span></code>: an existing helics_broker </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a88e1f4319ff097778fb95a5e1432d8e6"></span><code class="descname">HELICS_EXPORT helics_status helicsCoreDisconnect(helics_core core)</code></dt>
+<dd><p>get an identifier for the core <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration indicating any error condition </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">core</span></code>: the core to query </li>
+<li><code class="docutils literal notranslate"><span class="pre">identifier</span></code>: storage space to place the identifier string </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum space available in identifier </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a7c74b5499979f1a776cd49fff4f3597b"></span><code class="descname">HELICS_EXPORT void helicsCoreFree(helics_core core)</code></dt>
+<dd><p>release the memory associated with a core </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a2a6819d8b723f5fcf7c4ad416f383783"></span><code class="descname">HELICS_EXPORT helics_status helicsCoreGetIdentifier(helics_core core, char * identifier, int maxlen)</code></dt>
+<dd><p>get an identifier for the core <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration indicating any error condition </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">core</span></code>: the core to query </li>
+<li><code class="docutils literal notranslate"><span class="pre">identifier</span></code>: storage space to place the identifier string </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum space available in identifier </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1afe310b3da36eb2b8638cad94578ccbe0"></span><code class="descname">HELICS_EXPORT int helicsCoreIsConnected(helics_core core)</code></dt>
+<dd><p>check if a core is connected a connected core implies is attached to federate or federates could be attached to it return 0 if not connected , something else if it is connected </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFilters_8h_1af7b60c5d1197b4d77c8d05cda6f45834"></span><code class="descname">HELICS_EXPORT helics_filter helicsCoreRegisterCloningFilter(helics_core core, const char * deliveryEndpoint)</code></dt>
+<dd><p>create a cloning Filter on the specified core</p>
+<p>cloning filters copy a message and send it to multiple locations source and destination can be added through other functions <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_filter object </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">core</span></code>: the core to register through </li>
+<li><code class="docutils literal notranslate"><span class="pre">deliveryEndpoint</span></code>: the specified endpoint to deliver the message </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFilters_8h_1ae66fa0ec1ce0a86905acc6cd455621f8"></span><code class="descname">HELICS_EXPORT helics_filter helicsCoreRegisterDestinationFilter(helics_core core, helics_filter_type_t type, const char * target, const char * name)</code></dt>
+<dd><p>create a destination Filter on the specified core</p>
+<p>filters can be created through a federate or a core , linking through a federate allows a few extra features of name matching to function on the federate interface but otherwise equivalent behavior <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_filter object </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">core</span></code>: the core to register the filter through </li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: the type of filter to create </li>
+<li><code class="docutils literal notranslate"><span class="pre">target</span></code>: the name of endpoint to target </li>
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code>: the name of the filter (can be NULL) </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFilters_8h_1a18782f533dab740d575c64942478a35a"></span><code class="descname">HELICS_EXPORT helics_filter helicsCoreRegisterSourceFilter(helics_core core, helics_filter_type_t type, const char * target, const char * name)</code></dt>
+<dd><p>create a source Filter on the specified core</p>
+<p>filters can be created through a federate or a core , linking through a federate allows a few extra features of name matching to function on the federate interface but otherwise equivalent behavior <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_filter object </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">core</span></code>: the core to register through </li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: the type of filter to create </li>
+<li><code class="docutils literal notranslate"><span class="pre">target</span></code>: the name of endpoint to target </li>
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code>: the name of the filter (can be NULL) </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a995e948d4a7282b67ebfe493bbf8257e"></span><code class="descname">HELICS_EXPORT helics_status helicsCoreSetReadyToInit(helics_core core)</code></dt>
+<dd><p>set the core to ready to init</p>
+<p>this function is used for cores that have filters but no federates so there needs to be a direct signal to the core to trigger the federation initialization </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1aeb64e4cbbfd666b121a2814a0baef4de"></span><code class="descname">HELICS_EXPORT helics_broker helicsCreateBroker(const char * type, const char * name, const char * initString)</code></dt>
+<dd><p>create a broker object <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_core object </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: the type of the broker to create </li>
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code>: the name of the broker , may be a nullptr or empty string to have a name automatically assigned </li>
+<li><code class="docutils literal notranslate"><span class="pre">initString</span></code>: an initialization string to send to the core-the format is similar to command line arguments typical options include a broker address broker=”XSSAF” if this is a subbroker or the number of federates or the address </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a67120dcefd390f765fee806a87963823"></span><code class="descname">HELICS_EXPORT helics_broker helicsCreateBrokerFromArgs(const char * type, const char * name, int argc, const char *const * argv)</code></dt>
+<dd><p>create a core object by passing command line arguments <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_core object </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: the type of the core to create </li>
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code>: the name of the core , may be a nullptr or empty string to have a name automatically assigned </li>
+<li><code class="docutils literal notranslate"><span class="pre">argc</span></code>: the number of arguments </li>
+<li><code class="docutils literal notranslate"><span class="pre">argv</span></code>: the string values from a command line </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1ab241663ff8c48ed1c4348a59245b3d3b"></span><code class="descname">HELICS_EXPORT helics_federate helicsCreateCombinationFederate(const  helics_federate_info_t fi)</code></dt>
+<dd><p>create a combination federate from a federate info object</p>
+<p>combination federates are both value federates and message federates, objects can be used in all functions that take a helics_federate, helics_message_federate or helics_federate object as an argument <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>an opaque value federate object nullptr if the object creation failed </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: the federate info object that contains details on the federate </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a97837aeb4418507df28f09809e9e9e29"></span><code class="descname">HELICS_EXPORT helics_federate helicsCreateCombinationFederateFromJson(const char * json)</code></dt>
+<dd><p>create a combination federate from a JSON file or JSON string</p>
+<p>combination federates are both value federates and message federates, objects can be used in all functions that take a helics_federate, helics_message_federate or helics_federate object as an argument <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>an opaque combination federate object </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">JSON</span></code>: a JSON file or a JSON string that contains setup and configuration information </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a62142b8fd78b0c5bf2bd3aba211c1d01"></span><code class="descname">HELICS_EXPORT helics_core helicsCreateCore(const char * type, const char * name, const char * initString)</code></dt>
+<dd><p>create a core object <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_core object </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: the type of the core to create </li>
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code>: the name of the core , may be a nullptr or empty string to have a name automatically assigned </li>
+<li><code class="docutils literal notranslate"><span class="pre">initString</span></code>: an initialization string to send to the core-the format is similar to command line arguments typical options include a broker address broker=”XSSAF” or the number of federates or the address </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1ace2c87e739bfe802eb8e1484d773c7b7"></span><code class="descname">HELICS_EXPORT helics_core helicsCreateCoreFromArgs(const char * type, const char * name, int argc, const char *const * argv)</code></dt>
+<dd><p>create a core object by passing command line arguments <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_core object </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: the type of the core to create </li>
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code>: the name of the core , may be a nullptr or empty string to have a name automatically assigned </li>
+<li><code class="docutils literal notranslate"><span class="pre">argc</span></code>: the number of arguments </li>
+<li><code class="docutils literal notranslate"><span class="pre">argv</span></code>: the string values from a command line </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1ae5de7d14c8bd4e2c2495e2f190112ba7"></span><code class="descname">HELICS_EXPORT helics_federate helicsCreateMessageFederate(const  helics_federate_info_t fi)</code></dt>
+<dd><p>create a message federate from a federate info object</p>
+<p>helics_message_federate objects can be used in all functions that take a helics_message_federate or helics_federate object as an argument <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>an opaque message federate object </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: the federate info object that contains details on the federate </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1ab460fce5b90c24aee847f842835d5078"></span><code class="descname">HELICS_EXPORT helics_federate helicsCreateMessageFederateFromJson(const char * json)</code></dt>
+<dd><p>create a message federate from a JSON file or JSON string</p>
+<p>helics_message_federate objects can be used in all functions that take a helics_message_federate or helics_federate object as an argument <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>an opaque message federate object </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">JSON</span></code>: a JSON file or a JSON string that contains setup and configuration information </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1ac290df999ec7e7527cb4337c5d3b1461"></span><code class="descname">HELICS_EXPORT helics_query helicsCreateQuery(const char * target, const char * query)</code></dt>
+<dd><p>create a query object</p>
+<p>a query object consists of a target and query string </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a61a0985999a963471440aa4d7cca7197"></span><code class="descname">HELICS_EXPORT helics_federate helicsCreateValueFederate(const  helics_federate_info_t fi)</code></dt>
+<dd><p>create a value federate from a federate info object</p>
+<p>helics_federate objects can be used in all functions that take a helics_federate or helics_federate object as an argument <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>an opaque value federate object </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: the federate info object that contains details on the federate </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a87eb522813e218a1d97955f39a32357e"></span><code class="descname">HELICS_EXPORT helics_federate helicsCreateValueFederateFromJson(const char * json)</code></dt>
+<dd><p>create a value federate from a JSON file or JSON string</p>
+<p>helics_federate objects can be used in all functions that take a helics_federate or helics_federate object as an argument <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>an opaque value federate object </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">JSON</span></code>: a JSON file or a JSON string that contains setup and configuration information </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFederate_8h_1a226340d0efc57892920fbaeff72b6ffc"></span><code class="descname">HELICS_EXPORT message_t helicsEndpointGetMessage(helics_endpoint endpoint)</code></dt>
+<dd><p>receive a packet from a particular endpoint <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a message object </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">endpoint</span></code>: the identifier for the endpoint </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFederate_8h_1a61aa88ca38124f790ed1f8529f205a1a"></span><code class="descname">HELICS_EXPORT helics_status helicsEndpointGetName(helics_endpoint endpoint, char * outputString, int maxlen)</code></dt>
+<dd><p>get the name of an endpoint <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a status variable </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">endpoint</span></code>: the endpoint object in question </li>
+<li><code class="docutils literal notranslate"><span class="pre">outputString</span></code>: the location where the string is stored </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum string length that can be stored in str </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFederate_8h_1af850c52c2d5b7f23db944ee8510b4b83"></span><code class="descname">HELICS_EXPORT helics_status helicsEndpointGetType(helics_endpoint endpoint, char * outputString, int maxlen)</code></dt>
+<dd><p>get the type specified for an endpoint <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a status variable </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">endpoint</span></code>: the endpoint object in question </li>
+<li><code class="docutils literal notranslate"><span class="pre">outputString</span></code>: the location where the string is stored </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum string length that can be stored in str </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFederate_8h_1a6ce4a31bb512a63055332c1fa1d01310"></span><code class="descname">HELICS_EXPORT helics_bool_t helicsEndpointHasMessage(helics_endpoint endpoint)</code></dt>
+<dd><p>check if a given endpoint has any unread messages <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_true if the endpoint has a message, false otherwise </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">endpoint</span></code>: the endpoint to check </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFederate_8h_1a22be522dcdd72c6bb0156c625c6299bc"></span><code class="descname">HELICS_EXPORT int helicsEndpointReceiveCount(helics_endpoint endpoint)</code></dt>
+<dd><p>Returns the number of pending receives for all endpoints of particular federate. <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">endpoint</span></code>: the endpoint to query </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFederate_8h_1ab803f22da14aa7985528b26131c830ce"></span><code class="descname">HELICS_EXPORT helics_status helicsEndpointSendEventRaw(helics_endpoint endpoint, const char * dest, const void * data, int inputDataLength, helics_time_t time)</code></dt>
+<dd><p>send a message at a specific time to the specified destination <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_ok if everything worked </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">endpoint</span></code>: the endpoint to send the data from </li>
+<li><code class="docutils literal notranslate"><span class="pre">dest</span></code>: the target destination (nullptr to use the default destination </li>
+<li><code class="docutils literal notranslate"><span class="pre">data</span></code>: the data to send </li>
+<li><code class="docutils literal notranslate"><span class="pre">len</span></code>: the length of the data to send </li>
+<li><code class="docutils literal notranslate"><span class="pre">time</span></code>: the time the message should be sent </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFederate_8h_1afce62e8fceb97c7ad12736b346cbbc7b"></span><code class="descname">HELICS_EXPORT helics_status helicsEndpointSendMessage(helics_endpoint endpoint, message_t  * message)</code></dt>
+<dd><p>send a message object from a specific endpoint <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_ok if everything worked </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">endpoint</span></code>: the endpoint to send the data from </li>
+<li><code class="docutils literal notranslate"><span class="pre">message</span></code>: the actual message to send </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFederate_8h_1a25f9f228fe9bba60b06bf47041aa74b2"></span><code class="descname">HELICS_EXPORT helics_status helicsEndpointSendMessageRaw(helics_endpoint endpoint, const char * dest, const void * data, int inputDataLength)</code></dt>
+<dd><p>send a message to the specified destination <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_ok if everything worked </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">endpoint</span></code>: the endpoint to send the data from </li>
+<li><code class="docutils literal notranslate"><span class="pre">dest</span></code>: the target destination (nullptr to use the default destination </li>
+<li><code class="docutils literal notranslate"><span class="pre">data</span></code>: the data to send </li>
+<li><code class="docutils literal notranslate"><span class="pre">len</span></code>: the length of the data to send </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFederate_8h_1a890e84d460128a306f750e31ba0a4a3b"></span><code class="descname">HELICS_EXPORT helics_status helicsEndpointSetDefaultDestination(helics_endpoint endpoint, const char * dest)</code></dt>
+<dd><p>set the default destination for an endpoint if no other endpoint is given <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">endpoint</span></code>: the endpoint to set the destination for </li>
+<li><code class="docutils literal notranslate"><span class="pre">dest</span></code>: a string naming the desired default endpoint </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFederate_8h_1a4ad74ea9eca7406977eb7cdbecb63999"></span><code class="descname">HELICS_EXPORT helics_status helicsEndpointSubscribe(helics_endpoint endpoint, const char * key, const char * type)</code></dt>
+<dd><p>subscribe an endpoint to a publication <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">endpoint</span></code>: the endpoint to use </li>
+<li><code class="docutils literal notranslate"><span class="pre">key</span></code>: the name of the publication </li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: the type of the publication that is expected (nullptr or “” for DON’T CARE) </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a83ac20639ec2adb7ab47179c91c15e78"></span><code class="descname">HELICS_EXPORT helics_federate helicsFederateClone(helics_federate fed)</code></dt>
+<dd><p>create a new reference to an existing federate</p>
+<p>this will create a new helics_federate object that references the existing federate it must be freed as well <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a new reference to the same federate </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: an existing helics_federate </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a6419e931b06eb3d281b617507e770331"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateEnterExecutionMode(helics_federate fed)</code></dt>
+<dd><p>request that the federate enter the Execution mode</p>
+<p>this call is blocking until granted entry by the core object for an asynchronous alternative call /ref helicsFederateEnterExecutionModeAsync on return from this call the federate will be at time 0 <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration helics_error if something went wrong helicsInvalidReference if fed is invalid </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: a federate to change modes </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a80922544999ea01e212615530eb39454"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateEnterExecutionModeAsync(helics_federate fed)</code></dt>
+<dd><p>request that the federate enter the Execution mode</p>
+<p>this call is non-blocking and will return immediately call /ref helicsFederateEnterExecutionModeComplete to finish the call sequence /ref </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a57af5001f3be3382d0cc67b5007eaae4"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateEnterExecutionModeComplete(helics_federate fed)</code></dt>
+<dd><p>complete the call to /ref EnterExecutionModeAsync <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate object to complete the call </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1ad6631a6f9a341a335571332d62c8b155"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateEnterExecutionModeIterative(helics_federate fed, helics_iteration_request iterate, helics_iteration_status  * outIterate)</code></dt>
+<dd><p>request an iterative time</p>
+<p>this call allows for finer grain control of the iterative process then /ref helicsFederateRequestTime it takes a time and and iteration request and return a time and iteration status <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status object with a return code of the result </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate to make the request of </li>
+<li><code class="docutils literal notranslate"><span class="pre">iterate</span></code>: the requested iteration mode </li>
+<li><code class="docutils literal notranslate"><span class="pre">outIterate</span></code>: the iteration specification of the result </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a1abe49eafe7a53f285f12ef0cd8c2d7b"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateEnterExecutionModeIterativeAsync(helics_federate fed, helics_iteration_request iterate)</code></dt>
+<dd><p>request an iterative entry to the execution mode</p>
+<p>this call allows for finer grain control of the iterative process then /ref helicsFederateRequestTime it takes a time and and iteration request and return a time and iteration status <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status object with a return code of the result </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate to make the request of </li>
+<li><code class="docutils literal notranslate"><span class="pre">iterate</span></code>: the requested iteration mode </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1af346997ec1f5abcdfc4590a2289f85ee"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateEnterExecutionModeIterativeComplete(helics_federate fed, helics_iteration_status  * outIterate)</code></dt>
+<dd><p>complete the asynchronous iterative call into ExecutionModel <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status object with a return code of the result helics_ok if there were no issues </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate to make the request of </li>
+<li><code class="docutils literal notranslate"><span class="pre">outIterate</span></code>: the iteration specification of the result </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a3cb33c7e1442171ec794e8e5fb87f3a4"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateEnterInitializationMode(helics_federate fed)</code></dt>
+<dd><p>enter the initialization state of a federate</p>
+<p>the initialization state allows initial values to be set and received if the iteration is requested on entry to the execution state This is a blocking call and will block until the core allows it to proceed </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a8a069c24242b4199b63f7fd3a5b8a1f5"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateEnterInitializationModeAsync(helics_federate fed)</code></dt>
+<dd><p>non blocking alternative to  the function helicsFederateEnterInitializationModeFinalize must be called to finish the operation </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a867263ba82599beee921d9ce480e4677"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateEnterInitializationModeComplete(helics_federate fed)</code></dt>
+<dd><p>finalize the entry to initialize mode that was initiated with  </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1afcef595c63de01dfa03e6e39f761e209"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateFinalize(helics_federate fed)</code></dt>
+<dd><p>finalize the federate this halts all communication in the federate and disconnects it from the core </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1af5c0aeb64e5cd9df57d81043e8ed3043"></span><code class="descname">HELICS_EXPORT void helicsFederateFree(helics_federate fed)</code></dt>
+<dd><p>release the memory associated withe a federate </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a73efd797d3f72ccd0aa2f2a1fbf832dc"></span><code class="descname">HELICS_EXPORT helics_core helicsFederateGetCoreObject(helics_federate fed)</code></dt>
+<dd><p>get the core object associated with a federate <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a core object, nullptr if invalid </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: a federate object </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1adc0c424d17da77f1935f72445c729979"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateGetCurrentTime(helics_federate fed, helics_time_t  * time)</code></dt>
+<dd><p>get the current time of the federate <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_status object indicating success or error </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate object to query </li>
+<li><code class="docutils literal notranslate"><span class="pre">time</span></code>: storage location for the time variable </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFederate_8h_1ad034dd966a65fb417e99c3b966c21ef5"></span><code class="descname">HELICS_EXPORT int helicsFederateGetEndpointCount(helics_federate fed)</code></dt>
+<dd><p>get the number of endpoints in a federate <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>(-1) if fed was not a valid federate otherwise returns the number of subscriptions </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFederate_8h_1aef5bbcf416629d4bd1cac50e86dd47f2"></span><code class="descname">HELICS_EXPORT message_t helicsFederateGetMessage(helics_federate fed)</code></dt>
+<dd><p>receive a communication message for any endpoint in the federate</p>
+<p>the return order will be in order of endpoint creation then order of arrival all messages for the first endpoint, then all for the second, and so on within a single endpoint the messages are ordered by time, then source_id, then order of arrival <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a unique_ptr to a Message object containing the message data </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a782159ab913c3a08b68134e053e4e488"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateGetName(helics_federate fed, char * outputString, int maxlen)</code></dt>
+<dd><p>get the name of the federate <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_status object indicating success or error </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate object to query </li>
+<li><code class="docutils literal notranslate"><span class="pre">outputString</span></code>: memory buffer to store the result </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum size of the buffer </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="ValueFederate_8h_1a5f7ce7850bda9fe5634a8991442b4937"></span><code class="descname">HELICS_EXPORT int helicsFederateGetPublicationCount(helics_federate fed)</code></dt>
+<dd><p>get the number of publications in a federate <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>(-1) if fed was not a valid federate otherwise returns the number of publications </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a937a9454a21544510a83d376869ec0ff"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateGetState(helics_federate fed, federate_state  * state)</code></dt>
+<dd><p>get the current state of a federate <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the fed to query </li>
+<li><code class="docutils literal notranslate"><span class="pre">state</span></code>: the resulting state if helics_status return helics_ok </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="ValueFederate_8h_1a984670e71e9db7af01013c646d42c1c4"></span><code class="descname">HELICS_EXPORT int helicsFederateGetSubscriptionCount(helics_federate fed)</code></dt>
+<dd><p>get the number of subscriptions in a federate <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>(-1) if fed was not a valid federate otherwise returns the number of subscriptions </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFederate_8h_1a34ab824f0fef3b7fefd5b6029c976447"></span><code class="descname">HELICS_EXPORT helics_bool_t helicsFederateHasMessage(helics_federate fed)</code></dt>
+<dd><p>check if the federate has any outstanding messages <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_true if the federate has a message waiting false otherwise </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate to check if it has </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a800fd9fa5c8aa568aeefe167f79a2239"></span><code class="descname">HELICS_EXPORT helics_federate_info_t helicsFederateInfoCreate()</code></dt>
+<dd><p>create a federate info object for specifying federate information when constructing a federate <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_federate_info_t object which is a reference to the created object </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a441d0f3578dd7ac0e2cd03be79073e40"></span><code class="descname">HELICS_EXPORT void helicsFederateInfoFree(helics_federate_info_t fi)</code></dt>
+<dd><p>delete the memory associated with a federate info object </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a772897b5901ec940485a0db434b7be89"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateInfoLoadFromArgs(helics_federate_info_t fi, int argc, const char *const * argv)</code></dt>
+<dd><p>load a federate info from command line arguments <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration indicating success or any potential errors </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: a federateInfo object </li>
+<li><code class="docutils literal notranslate"><span class="pre">argc</span></code>: the number of command line arguments </li>
+<li><code class="docutils literal notranslate"><span class="pre">argv</span></code>: an array of strings from the command line </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a3542148b1fd8c1580faed5e356ba24eb"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateInfoSetCoreInitString(helics_federate_info_t fi, const char * coreInit)</code></dt>
+<dd><p>set the initialization string for the core usually in the form of command line arguments <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration helics_ok on success helicsInvalidReference if fi is not a valid reference </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: the federate info object to alter </li>
+<li><code class="docutils literal notranslate"><span class="pre">coreInit</span></code>: a string with the core initialization strings </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1ab94e6a7ceee978f373d95a7dced1dbff"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateInfoSetCoreName(helics_federate_info_t fi, const char * corename)</code></dt>
+<dd><p>set the name of the core to link to for a federate <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration helics_ok on success helicsInvalidReference if fi is not a valid reference </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: the federate info object to alter </li>
+<li><code class="docutils literal notranslate"><span class="pre">corename</span></code>: the identifier for a core to link to </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a8eef122818f04b39ce04efd7bbbe48f6"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateInfoSetCoreType(helics_federate_info_t fi, int coretype)</code></dt>
+<dd><p>set the core type by integer code</p>
+<p>valid values available by definitions in api-data.h <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration helics_ok on success helicsInvalidReference if fi is not a valid reference helics_discard if the string is not recognized </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: the federate info object to alter </li>
+<li><code class="docutils literal notranslate"><span class="pre">coretype</span></code>: an numerical code for a core type </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a70794c9ff34c27b15537b9879a714bf1"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateInfoSetCoreTypeFromString(helics_federate_info_t fi, const char * coretype)</code></dt>
+<dd><p>set the core type from a string <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration helics_ok on success helicsInvalidReference if fi is not a valid reference helics_discard if the string is not recognized </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: the federate info object to alter </li>
+<li><code class="docutils literal notranslate"><span class="pre">coretype</span></code>: a string naming a core type </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a151bb0d8786c43c9874b9312351da5e3"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateInfoSetFederateName(helics_federate_info_t fi, const char * name)</code></dt>
+<dd><p>set the federate name in the Federate Info structure <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration helics_ok on success </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: the federate info object to alter </li>
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code>: the new identifier for the federate </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a60497a9d70c583e136e95bdd13395639"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateInfoSetFlag(helics_federate_info_t fi, int flag, helics_bool_t value)</code></dt>
+<dd><p>set a flag in the info structure</p>
+<p>valid flags are available flag-definitions.h <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration helics_ok on success helics_invalid_object if fi is not a valid reference helics_discard if the coretype is not recognized </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: the federate info object to alter </li>
+<li><code class="docutils literal notranslate"><span class="pre">flag</span></code>: a numerical index for a flag </li>
+<li><code class="docutils literal notranslate"><span class="pre">value</span></code>: the desired value of the flag helics_true or helics_false </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a2efa26c8c31ead3887d76e9902527529"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateInfoSetInputDelay(helics_federate_info_t fi, helics_time_t inputDelay)</code></dt>
+<dd><p>set the input delay for a federate info object <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration helics_ok on success helics_invalid_object if fi is not a valid reference helics_discard if the specified inputDelay is invalid </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: the federate info object to alter </li>
+<li><code class="docutils literal notranslate"><span class="pre">inputDelay</span></code>: the desired output delay of the federate </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1ac81ebb252dec2654b787be0b09e8873a"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateInfoSetLoggingLevel(helics_federate_info_t fi, int logLevel)</code></dt>
+<dd><p>set the logging level of a federate</p>
+<p>&lt;0 none, 0, errors only, 1+warnings, 2+summary, 3+debug, 4+trace <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration helics_ok on success helics_invalid_object if fi is not a valid reference </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: the federateInfo object to alter </li>
+<li><code class="docutils literal notranslate"><span class="pre">logLevel</span></code>: the specified log level for a federate </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a35d855aba3eec96a89edd8acc4b382de"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateInfoSetMaxIterations(helics_federate_info_t fi, int maxIterations)</code></dt>
+<dd><p>set the max iteration count to use in federate in the info object</p>
+<p>a federate will iterate for at most min(maxIterations,core maxIterations) <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration helics_ok on success helics_invalid_object if fi is not a valid reference helics_discard if the specified offset is invalid </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: the federateInfo object to alter </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxIterations</span></code>: the maximum number of iterations a federate is allowed per timestep </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a42bc60150ea4e7c51debca0898c507b8"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateInfoSetOutputDelay(helics_federate_info_t fi, helics_time_t outputDelay)</code></dt>
+<dd><p>set the output delay for a federate <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration helics_ok on success helics_invalid_object if fi is not a valid reference helics_discard if the specified outputdelay is invalid </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: the federate info object to alter </li>
+<li><code class="docutils literal notranslate"><span class="pre">outputDelay</span></code>: the desired output delay of the federate </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1ae7691d722cbd86ba226cecbba3db9e98"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateInfoSetPeriod(helics_federate_info_t fi, helics_time_t period)</code></dt>
+<dd><p>set the period for federate in the info object</p>
+<p>a federate will grant time only on integer periods if the period is specified&gt;0 the offset will shift this return by some amount of time such that the federate will only grant times such as <span class="math notranslate nohighlight">\( N*period+offset \)</span> period must be strictly greater than 0, though setting to 0 implies a period of the timeEpsilon used in HELICS <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration helics_ok on success helics_invalid_object if fi is not a valid reference helics_discard if the specified period is invalid </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: the federateInfo object to alter </li>
+<li><code class="docutils literal notranslate"><span class="pre">period</span></code>: the desired period </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a285fd34be8e0660afbc469e8dbda8fb9"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateInfoSetTimeDelta(helics_federate_info_t fi, helics_time_t timeDelta)</code></dt>
+<dd><p>set the minimum time delta between returns for a federate info object <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration helics_ok on success helics_invalid_object if fi is not a valid reference helics_discard if the specified time_delta is invalid </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: the federate info object to alter </li>
+<li><code class="docutils literal notranslate"><span class="pre">timeDelta</span></code>: the desired output delay of the federate </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a2b59f824fc1ce686abf0bcf63654d354"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateInfoSetTimeOffset(helics_federate_info_t fi, helics_time_t timeOffset)</code></dt>
+<dd><p>set the time offset for federate in the info object</p>
+<p>a federate will grant time only on integer periods if the period is specified&gt;0 the offset will shift this return by some amount of time such that the federate will only grant times such as <span class="math notranslate nohighlight">\( N*period+offset \)</span> <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration helics_ok on success helics_invalid_object if fi is not a valid reference helics_discard if the specified offset is invalid </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: the federateInfo object to alter </li>
+<li><code class="docutils literal notranslate"><span class="pre">timeOffset</span></code>: the desired timeOffset </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1af21d65788af6cfbbb4e11b02a61547d4"></span><code class="descname">HELICS_EXPORT helics_bool_t helicsFederateIsAsyncOperationCompleted(helics_federate fed)</code></dt>
+<dd><p>check if the current Asynchronous operation has completed <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>0 if not completed, 1 if completed </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate to operate on </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFederate_8h_1adf938554305580ddca5f3347d347c4c8"></span><code class="descname">HELICS_EXPORT int helicsFederateReceiveCount(helics_federate fed)</code></dt>
+<dd><p>Returns the number of pending receives for the specified destination endpoint. <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate to get the number of waiting messages </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFilters_8h_1aeeee8f5316b024e99a119120c9c727b4"></span><code class="descname">HELICS_EXPORT helics_filter helicsFederateRegisterCloningFilter(helics_federate fed, const char * deliveryEndpoint)</code></dt>
+<dd><p>create a cloning Filter on the specified federate</p>
+<p>cloning filters copy a message and send it to multiple locations source and destination can be added through other functions <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_filter object </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the fed to register through </li>
+<li><code class="docutils literal notranslate"><span class="pre">deliveryEndpoint</span></code>: the specified endpoint to deliver the message </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFilters_8h_1a4411dd16a169cef2060632a951bf2c6c"></span><code class="descname">HELICS_EXPORT helics_filter helicsFederateRegisterDestinationFilter(helics_federate fed, helics_filter_type_t type, const char * target, const char * name)</code></dt>
+<dd><p>create a destination Filter on the specified federate</p>
+<p>filters can be created through a federate or a core , linking through a federate allows a few extra features of name matching to function on the federate interface but otherwise equivalent behavior <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_filter object </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the fed to register through </li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: the type of filter to create </li>
+<li><code class="docutils literal notranslate"><span class="pre">target</span></code>: the name of endpoint to target </li>
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code>: the name of the filter (can be NULL) </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFederate_8h_1a7359cd5f4217cdc316f6c36021e71ded"></span><code class="descname">HELICS_EXPORT helics_endpoint helicsFederateRegisterEndpoint(helics_federate fed, const char * name, const char * type)</code></dt>
+<dd><p>create an endpoint</p>
+<p>the endpoint becomes part of the federate and is destroyed when the federate is freed so there are no separate free functions for endpoints <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>an object containing the endpoint, nullptr on failure </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate object in which to create an endpoint must have been create with helicsCreateMessageFederate or helicsCreateCombinationFederate </li>
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code>: the identifier for the endpoint, this will be prepended with the federate name for the global identifier </li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: a string describing the expected type of the publication may be NULL </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFederate_8h_1ac3030831a187e321de6635e08ebef470"></span><code class="descname">HELICS_EXPORT helics_endpoint helicsFederateRegisterGlobalEndpoint(helics_federate fed, const char * name, const char * type)</code></dt>
+<dd><p>create an endpoint</p>
+<p>the endpoint becomes part of the federate and is destroyed when the federate is freed so there are no separate free functions for endpoints <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>an object containing the endpoint, nullptr on failure </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate object in which to create an endpoint must have been create with helicsCreateMessageFederate or helicsCreateCombinationFederate </li>
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code>: the identifier for the endpoint, the given name is the global identifier </li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: a string describing the expected type of the publication may be NULL </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="ValueFederate_8h_1a909702e18fbe4c80c8eace23d777e5fc"></span><code class="descname">HELICS_EXPORT helics_publication helicsFederateRegisterGlobalPublication(helics_federate fed, const char * key, const char * type, const char * units)</code></dt>
+<dd><p>register a global named publication with an arbitrary type</p>
+<p>the publication becomes part of the federate and is destroyed when the federate is freed so there are no separate free functions for subscriptions and publications <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>an object containing the publication </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate object in which to create a publication </li>
+<li><code class="docutils literal notranslate"><span class="pre">key</span></code>: the identifier for the publication </li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: a string describing the expected type of the publication </li>
+<li><code class="docutils literal notranslate"><span class="pre">units</span></code>: a string listing the units of the subscription maybe NULL </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="ValueFederate_8h_1a35427b881163a29ece56888f3f8233df"></span><code class="descname">HELICS_EXPORT helics_publication helicsFederateRegisterGlobalTypePublication(helics_federate fed, const char * key, int type, const char * units)</code></dt>
+<dd><p>register a global publication with a defined type</p>
+<p>the publication becomes part of the federate and is destroyed when the federate is freed so there are no separate free functions for subscriptions and publications <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>an object containing the publication </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate object in which to create a publication </li>
+<li><code class="docutils literal notranslate"><span class="pre">key</span></code>: the identifier for the publication </li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: a code identifying the type of the publication one of HELICS_DATA_TYPE_STRING, HELICS_DATA_TYPE_INT, HELICS_DATA_TYPE_DOUBLE, HELICS_DATA_TYPE_COMPLEX, HELICS_DATA_TYPE_VECTOR, HELICS_DATA_TYPE_NAMEDPOINT, HELICS_DATA_TYPE_BOOLEAN HELICS_DATA_TYPE_RAW </li>
+<li><code class="docutils literal notranslate"><span class="pre">units</span></code>: a string listing the units of the subscription maybe NULL </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="ValueFederate_8h_1a41a3905e562f44526d4fd34663f68be2"></span><code class="descname">HELICS_EXPORT helics_subscription helicsFederateRegisterOptionalSubscription(helics_federate fed, const char * key, const char * type, const char * units)</code></dt>
+<dd><p>create a subscription that is specifically stated to be optional</p>
+<p>the subscription becomes part of the federate and is destroyed when the federate is freed so there are no separate free functions for subscriptions and publications</p>
+<p>optional implies that there may or may not be matching publication elsewhere in the federation <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>an object containing the subscription </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate object in which to create a subscription </li>
+<li><code class="docutils literal notranslate"><span class="pre">key</span></code>: the identifier matching a publication to get a subscription for </li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: a string describing the expected type of the publication may be NULL </li>
+<li><code class="docutils literal notranslate"><span class="pre">units</span></code>: a string listing the units of the subscription maybe NULL </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="ValueFederate_8h_1a280cab3da63cadf40628ea9a9ebc2795"></span><code class="descname">HELICS_EXPORT helics_subscription helicsFederateRegisterOptionalTypeSubscription(helics_federate fed, const char * key, int type, const char * units)</code></dt>
+<dd><p>create a subscription of a specific known type that is specifically stated to be optional</p>
+<p>the subscription becomes part of the federate and is destroyed when the federate is freed so there are no separate free functions for subscriptions and publications optional implies that there may or may not be matching publication elsewhere in the federation <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>an object containing the subscription </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate object in which to create a subscription </li>
+<li><code class="docutils literal notranslate"><span class="pre">key</span></code>: the identifier matching a publication to get a subscription for </li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: a known type identifier HELICS_DATA_TYPE_STRING, HELICS_DATA_TYPE_INT, HELICS_DATA_TYPE_DOUBLE, HELICS_DATA_TYPE_COMPLEX, HELICS_DATA_TYPE_VECTOR, HELICS_DATA_TYPE_NAMEDPOINT, HELICS_DATA_TYPE_BOOLEAN HELICS_DATA_TYPE_RAW </li>
+<li><code class="docutils literal notranslate"><span class="pre">units</span></code>: a string listing the units of the subscription maybe NULL </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="ValueFederate_8h_1a3aa6aad5790238c05d1dad9ef5d3b938"></span><code class="descname">HELICS_EXPORT helics_publication helicsFederateRegisterPublication(helics_federate fed, const char * key, const char * type, const char * units)</code></dt>
+<dd><p>register a publication with an arbitrary type</p>
+<p>the publication becomes part of the federate and is destroyed when the federate is freed so there are no separate free functions for subscriptions and publications <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>an object containing the publication </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate object in which to create a publication </li>
+<li><code class="docutils literal notranslate"><span class="pre">key</span></code>: the identifier for the publication the global publication key will be prepended with the federate name </li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: a string describing the expected type of the publication </li>
+<li><code class="docutils literal notranslate"><span class="pre">units</span></code>: a string listing the units of the subscription maybe NULL </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFilters_8h_1a3373c07f9abba1b64eb508e634ae1555"></span><code class="descname">HELICS_EXPORT helics_filter helicsFederateRegisterSourceFilter(helics_federate fed, helics_filter_type_t type, const char * target, const char * name)</code></dt>
+<dd><p>create a source Filter on the specified federate</p>
+<p>filters can be created through a federate or a core , linking through a federate allows a few extra features of name matching to function on the federate interface but otherwise equivalent behavior <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_filter object </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the fed to register through </li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: the type of filter to create </li>
+<li><code class="docutils literal notranslate"><span class="pre">target</span></code>: the name of endpoint to target </li>
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code>: the name of the filter (can be NULL) </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="ValueFederate_8h_1a03e436c8fb80f0f69e79fb699acc5d93"></span><code class="descname">HELICS_EXPORT helics_subscription helicsFederateRegisterSubscription(helics_federate fed, const char * key, const char * type, const char * units)</code></dt>
+<dd><p>create a subscription</p>
+<p>the subscription becomes part of the federate and is destroyed when the federate is freed so there are no separate free functions for subscriptions and publications <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>an object containing the subscription </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate object in which to create a subscription must have been create with helicsCreateValueFederate or helicsCreateCombinationFederate </li>
+<li><code class="docutils literal notranslate"><span class="pre">key</span></code>: the identifier matching a publication to get a subscription for </li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: a string describing the expected type of the publication may be NULL </li>
+<li><code class="docutils literal notranslate"><span class="pre">units</span></code>: a string listing the units of the subscription maybe NULL </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="ValueFederate_8h_1ab304b19ba12862322d6bfb576d8470ec"></span><code class="descname">HELICS_EXPORT helics_publication helicsFederateRegisterTypePublication(helics_federate fed, const char * key, int type, const char * units)</code></dt>
+<dd><p>register a publication with a defined type</p>
+<p>the publication becomes part of the federate and is destroyed when the federate is freed so there are no separate free functions for subscriptions and publications <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>an object containing the publication </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate object in which to create a publication </li>
+<li><code class="docutils literal notranslate"><span class="pre">key</span></code>: the identifier for the publication </li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: a code identifying the type of the publication one of HELICS_DATA_TYPE_STRING, HELICS_DATA_TYPE_INT, HELICS_DATA_TYPE_DOUBLE, HELICS_DATA_TYPE_COMPLEX, HELICS_DATA_TYPE_VECTOR, HELICS_DATA_TYPE_NAMEDPOINT, HELICS_DATA_TYPE_BOOLEAN HELICS_DATA_TYPE_RAW </li>
+<li><code class="docutils literal notranslate"><span class="pre">units</span></code>: a string listing the units of the subscription maybe NULL </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="ValueFederate_8h_1aa02ed14cb2307b92f0054048e23c9d3f"></span><code class="descname">HELICS_EXPORT helics_subscription helicsFederateRegisterTypeSubscription(helics_federate fed, const char * key, int type, const char * units)</code></dt>
+<dd><p>create a subscription of a specific known type</p>
+<p>the subscription becomes part of the federate and is destroyed when the federate is freed so there are no separate free functions for subscriptions and publications <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>an object containing the subscription </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate object in which to create a subscription </li>
+<li><code class="docutils literal notranslate"><span class="pre">key</span></code>: the identifier matching a publication to get a subscription for </li>
+<li><code class="docutils literal notranslate"><span class="pre">type</span></code>: a known type identifier HELICS_DATA_TYPE_STRING, HELICS_DATA_TYPE_INT, HELICS_DATA_TYPE_DOUBLE, HELICS_DATA_TYPE_COMPLEX, HELICS_DATA_TYPE_VECTOR, HELICS_DATA_TYPE_NAMEDPOINT, HELICS_DATA_TYPE_BOOLEAN, HELICS_DATA_TYPE_RAW </li>
+<li><code class="docutils literal notranslate"><span class="pre">units</span></code>: a string listing the units of the subscription maybe NULL </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a7b43f0b1d151966a583d8ba9795bf186"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateRequestTime(helics_federate fed, helics_time_t requestTime, helics_time_t  * timeOut)</code></dt>
+<dd><p>request the next time for federate execution <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status if the return value is equal to helics_ok the timeOut will contain the new granted time, otherwise timeOut is invalid </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate to make the request of </li>
+<li><code class="docutils literal notranslate"><span class="pre">requestTime</span></code>: the next requested time </li>
+<li><code class="docutils literal notranslate"><span class="pre">timeOut</span></code>: the time granted to the federate </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1ab98554e58083c30e711cd7fc7404b87f"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateRequestTimeAsync(helics_federate fed, helics_time_t requestTime)</code></dt>
+<dd><p>request the next time for federate execution in an asynchronous call</p>
+<p>call /ref helicsFederateRequestTimeComplete to finish the call <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status if the return value is equal to helics_ok </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate to make the request of </li>
+<li><code class="docutils literal notranslate"><span class="pre">requestTime</span></code>: the next requested time </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1ab449c18ac44bec02feaf576464673fdc"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateRequestTimeComplete(helics_federate fed, helics_time_t  * timeOut)</code></dt>
+<dd><p>complete an asynchronous requestTime call <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status if the return value is equal to helics_ok the timeOut will contain the new granted time, otherwise timeOut is invalid </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate to make the request of </li>
+<li><code class="docutils literal notranslate"><span class="pre">timeOut</span></code>: the time granted to the federate </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1ae52ed1f03dcc5b13633e85a8234a2c4a"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateRequestTimeIterative(helics_federate fed, helics_time_t requestTime, helics_iteration_request iterate, helics_time_t  * timeOut, helics_iteration_status  * outIterate)</code></dt>
+<dd><p>request an iterative time</p>
+<p>this call allows for finer grain control of the iterative process then /ref helicsFederateRequestTime it takes a time and and iteration request and return a time and iteration status <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status object with a return code of the result </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate to make the request of </li>
+<li><code class="docutils literal notranslate"><span class="pre">requestTime</span></code>: the next desired time </li>
+<li><code class="docutils literal notranslate"><span class="pre">iterate</span></code>: the requested iteration mode </li>
+<li><code class="docutils literal notranslate"><span class="pre">timeOut</span></code>: the granted time </li>
+<li><code class="docutils literal notranslate"><span class="pre">outIterate</span></code>: the iteration specification of the result </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a5bc7cbc2b7ff60687abd25c3144811ab"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateRequestTimeIterativeAsync(helics_federate fed, helics_time_t requestTime, helics_iteration_request iterate)</code></dt>
+<dd><p>request an iterative time through an asynchronous call</p>
+<p>this call allows for finer grain control of the iterative process then /ref helicsFederateRequestTime it takes a time and and iteration request and return a time and iteration status call /ref helicsFederateRequestTimeIterativeComplete to finish the process <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status object with a return code of the result </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate to make the request of </li>
+<li><code class="docutils literal notranslate"><span class="pre">requestTime</span></code>: the next desired time </li>
+<li><code class="docutils literal notranslate"><span class="pre">iterate</span></code>: the requested iteration mode </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a2a99d891e3d9a07701dd32fae197f56a"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateRequestTimeIterativeComplete(helics_federate fed, helics_time_t  * timeOut, helics_iteration_status  * outIterate)</code></dt>
+<dd><p>complete an iterative time request asynchronous call <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status object with a return code of the result </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate to make the request of </li>
+<li><code class="docutils literal notranslate"><span class="pre">timeOut</span></code>: the granted time </li>
+<li><code class="docutils literal notranslate"><span class="pre">outIterate</span></code>: the iteration specification of the result </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a5241a8d9c6c8d047c1acbebce8c945f2"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateSetFlag(helics_federate fed, int flag, helics_bool_t flagValue)</code></dt>
+<dd><p>set a flag for the federate <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: the federate to alter a flag for </li>
+<li><code class="docutils literal notranslate"><span class="pre">flag</span></code>: the flag to change </li>
+<li><code class="docutils literal notranslate"><span class="pre">flagValue</span></code>: the new value of the flag 0 for false !=0 for true </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1ae74ea9f213da5272cd700664ad8b05b4"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateSetInputDelay(helics_federate fed, helics_time_t inputDelay)</code></dt>
+<dd><p>set the impact Window time</p>
+<p>the impact window is the time window around the time request in which other federates cannot affect the federate <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">lookAhead</span></code>: the look ahead time </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a729fc26a13eb558ccf5eee6c8b982a2e"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateSetLoggingLevel(helics_federate fed, int loggingLevel)</code></dt>
+<dd><p>set the logging level for the federate &#64; details debug and trace only do anything if they were enabled in the compilation <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">loggingLevel</span></code>: (-1: none, 0: error_only, 1: warnings, 2: normal, 3: debug, 4: trace) </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1aad0d4aa5bd67cf5892d6673ced1140cd"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateSetMaxIterations(helics_federate fi, int maxIterations)</code></dt>
+<dd><p>set the max iteration count to use in federate in the info object</p>
+<p>a federate will iterate for at most min(maxIterations,core maxIterations) <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration helics_ok on success helics_invalid_object if fed is not a valid reference helics_discard if the specified offset is invalid </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fi</span></code>: the federateInfo object to alter </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxIterations</span></code>: the maximum number of iterations a federate is allowed per timestep </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a5f81b895ce2fe195e7e51eca53e9e21d"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateSetOutputDelay(helics_federate fed, helics_time_t outputDelay)</code></dt>
+<dd><p>set the look ahead time</p>
+<p>the look ahead is the propagation time for messages/event to propagate from the Federate the federate <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">lookAhead</span></code>: the look ahead time </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1adfce4b2162e6393c567bcd3f8972c93b"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateSetPeriod(helics_federate fed, helics_time_t period, helics_time_t offset)</code></dt>
+<dd><p>set the period and offset of the federate</p>
+<p>the federate will on grant time on N*period+offset interval <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">period</span></code>: the length of time between each subsequent grants </li>
+<li><code class="docutils literal notranslate"><span class="pre">offset</span></code>: the shift of the period from 0 offset must be &lt; period </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1aaadb6a0c74f499d8e3d0faefbe9c0e87"></span><code class="descname">HELICS_EXPORT helics_status helicsFederateSetTimeDelta(helics_federate fed, helics_time_t time)</code></dt>
+<dd><p>set the minimum time delta for the federate <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">tdelta</span></code>: the minimum time delta to return from a time request function </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__clone_1gad1cca32d901f1c85ae63cf227e480520"></span><code class="descname">HELICS_EXPORT helics_status helicsFilterAddDeliveryEndpoint(helics_filter filt, const char * deliveryEndpoint)</code></dt>
+<dd><p>add a delivery endpoint to a cloning filter</p>
+<p>all cloned messages are sent to the delivery address(es) </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__clone_1ga45d5099ae3b775d89158caf1c1a54791"></span><code class="descname">HELICS_EXPORT helics_status helicsFilterAddDestinationTarget(helics_filter filt, const char * dest)</code></dt>
+<dd><p>add a destination target to a cloning filter</p>
+<p>all messages going to a destination are copied to the delivery address(es) </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__clone_1ga7d99a4192d59d5832b890e1168cc5c9d"></span><code class="descname">HELICS_EXPORT helics_status helicsFilterAddSourceTarget(helics_filter filt, const char * source)</code></dt>
+<dd><p>add a source target to a cloning filter</p>
+<p>all messages coming from a source are copied to the delivery address(es) </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFilters_8h_1ace655433c774e033f4b0cf5a4a4978d7"></span><code class="descname">HELICS_EXPORT helics_status helicsFilterGetName(helics_filter filt, char * outputString, int maxlen)</code></dt>
+<dd><p>get the name of the filter and store in the given string 
+get the name of the filter <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration helics_ok if everything worked</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">filt</span></code>: the given filter </li>
+<li><code class="docutils literal notranslate"><span class="pre">outputString</span></code>: storage for the name of the target </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum length of string that str can store </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFilters_8h_1a344496f955ea92c0e64e136139d952ce"></span><code class="descname">HELICS_EXPORT helics_status helicsFilterGetTarget(helics_filter filt, char * outputString, int maxlen)</code></dt>
+<dd><p>get the target of the filter and store in the given string 
+get the target of the filter <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration helics_ok if everything worked</dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">filt</span></code>: the given filter </li>
+<li><code class="docutils literal notranslate"><span class="pre">outputString</span></code>: storage for the name of the target </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum length of string that str can store </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__clone_1gaaa2381680c3c0902fc500aaf800844f0"></span><code class="descname">HELICS_EXPORT helics_status helicsFilterRemoveDeliveryEndpoint(helics_filter filt, const char * deliveryEndpoint)</code></dt>
+<dd><p>remove a delivery destination from a cloning filter </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__clone_1ga36325e13c1d158e9ce6ff6c8ff7ae926"></span><code class="descname">HELICS_EXPORT helics_status helicsFilterRemoveDestinationTarget(helics_filter filt, const char * dest)</code></dt>
+<dd><p>remove a destination target from a cloning filter </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__clone_1ga9d414453ab3d155425495ff8e9f152df"></span><code class="descname">HELICS_EXPORT helics_status helicsFilterRemoveSourceTarget(helics_filter filt, const char * source)</code></dt>
+<dd><p>remove a source target from a cloning filter </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFilters_8h_1a98ac154bcfb5299483e8c2e07b02c5e1"></span><code class="descname">HELICS_EXPORT helics_status helicsFilterSet(helics_filter filt, const char * property, double val)</code></dt>
+<dd><p>set a property on a filter <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">filt</span></code>: the filter to modify </li>
+<li><code class="docutils literal notranslate"><span class="pre">property</span></code>: a string containing the property to set </li>
+<li><code class="docutils literal notranslate"><span class="pre">val</span></code>: a numerical value of the property </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="MessageFilters_8h_1a6e4bc4df021f821f3a3f4d675cd8248a"></span><code class="descname">HELICS_EXPORT helics_status helicsFilterSetString(helics_filter filt, const char * property, const char * val)</code></dt>
+<dd><p>set a string property on a filter <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">filt</span></code>: the filter to modify </li>
+<li><code class="docutils literal notranslate"><span class="pre">property</span></code>: a string containing the property to set </li>
+<li><code class="docutils literal notranslate"><span class="pre">val</span></code>: a string containing the new value </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1aaa11ab7d3176555751be0e9a7119afca"></span><code class="descname">HELICS_EXPORT helics_federate helicsGetFederateByName(const char * fedName)</code></dt>
+<dd><p>get an existing federate object from a core by name</p>
+<p>the federate must have been created by one of the other functions and at least one of the objects referencing the created federate must still be active in the process <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>NULL if no fed is available by that name otherwise a helics_federate with that name </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">fedName</span></code>: the name of the federate to retrieve </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a57e5fb86736e531e194e0a2fb5fe020e"></span><code class="descname">HELICS_EXPORT const char* helicsGetVersion()</code></dt>
+<dd><p>get a version string for HELICS </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1af21ad5ed5f0a033a03a2d4a2943c2262"></span><code class="descname">HELICS_EXPORT helics_bool_t helicsIsCoreTypeAvailable(const char * type)</code></dt>
+<dd><p>Returns true if core/broker type specified is available in current compilation.</p>
+<p>possible options include “test”,”zmq”,”udp”,”ipc”,”interprocess”,”tcp”,”default”, “mpi” </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__information_1ga52388656e13bd71c064a6611fec4fe14"></span><code class="descname">HELICS_EXPORT helics_status helicsPublicationGetKey(helics_publication pub, char * outputString, int maxlen)</code></dt>
+<dd><p>get the key of a publication</p>
+<p>this will be the global key used to identify the publication to the federation <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration, helics_ok if everything worked </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">pub</span></code>: the publication to query </li>
+<li><code class="docutils literal notranslate"><span class="pre">outputString</span></code>: a pointer to a memory location to store the resulting string </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum size of string that str can store </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__information_1gafafd27d5fc75844c92928000bd5f315e"></span><code class="descname">HELICS_EXPORT helics_status helicsPublicationGetType(helics_publication pub, char * outputString, int maxlen)</code></dt>
+<dd><p>get the type of a publication <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration, helics_ok if everything worked </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">pub</span></code>: the publication to query </li>
+<li><code class="docutils literal notranslate"><span class="pre">outputString</span></code>: a pointer to a memory location to store the resulting string </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum size of string that str can store </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__information_1gae6325f7f35af2875c86efd8ff2e870b3"></span><code class="descname">HELICS_EXPORT helics_status helicsPublicationGetUnits(helics_publication pub, char * outputString, int maxlen)</code></dt>
+<dd><p>get the units of a publication <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration, helics_ok if everything worked </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">pub</span></code>: the publication to query </li>
+<li><code class="docutils literal notranslate"><span class="pre">outputString</span></code>: a pointer to a memory location to store the resulting string </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum size of string that str can store </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__publications_1ga82e07ff68098c8e5b00a34b33fe95ae8"></span><code class="descname">HELICS_EXPORT helics_status helicsPublicationPublishComplex(helics_publication pub, double real, double imag)</code></dt>
+<dd><p>publish a complex value (or pair of values) <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_ok if everything was OK </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">pub</span></code>: the publication to publish for </li>
+<li><code class="docutils literal notranslate"><span class="pre">real</span></code>: the real part of a complex number to publish </li>
+<li><code class="docutils literal notranslate"><span class="pre">imag</span></code>: the imaginary part of a complex number to publish </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__publications_1ga12e05f36e96cf6d8b0f1c8a9e145dafe"></span><code class="descname">HELICS_EXPORT helics_status helicsPublicationPublishDouble(helics_publication pub, double val)</code></dt>
+<dd><p>publish a double floating point value <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_ok if everything was OK </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">pub</span></code>: the publication to publish for </li>
+<li><code class="docutils literal notranslate"><span class="pre">val</span></code>: the numerical value to publish </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__publications_1ga661923a53339a7a89770bc21c1c6ea75"></span><code class="descname">HELICS_EXPORT helics_status helicsPublicationPublishInteger(helics_publication pub, int64_t val)</code></dt>
+<dd><p>publish an integer value <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_ok if everything was OK </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">pub</span></code>: the publication to publish for </li>
+<li><code class="docutils literal notranslate"><span class="pre">val</span></code>: the numerical value to publish </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__publications_1ga6d7b5173b1ffcc2779ca45b6fd9519cb"></span><code class="descname">HELICS_EXPORT helics_status helicsPublicationPublishRaw(helics_publication pub, const void * data, int inputDataLength)</code></dt>
+<dd><p>publish raw data from a char * and length <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_ok if everything was OK </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">pub</span></code>: the publication to publish for </li>
+<li><code class="docutils literal notranslate"><span class="pre">data</span></code>: a pointer to the raw data </li>
+<li><code class="docutils literal notranslate"><span class="pre">len</span></code>: the size in bytes of the data to publish </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__publications_1gac6a5726112352f52acdf5ae9fc2b953b"></span><code class="descname">HELICS_EXPORT helics_status helicsPublicationPublishString(helics_publication pub, const char * str)</code></dt>
+<dd><p>publish a string <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_ok if everything was OK </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">pub</span></code>: the publication to publish for </li>
+<li><code class="docutils literal notranslate"><span class="pre">str</span></code>: a pointer to a NULL terminated string </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__publications_1ga0edd84c9f331abf7e3ee643a34f11253"></span><code class="descname">HELICS_EXPORT helics_status helicsPublicationPublishVector(helics_publication pub, const double * vectorInput, int vectorlength)</code></dt>
+<dd><p>publish a vector of doubles <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_ok if everything was OK </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">pub</span></code>: the publication to publish for </li>
+<li><code class="docutils literal notranslate"><span class="pre">data</span></code>: a pointer to an array of double data </li>
+<li><code class="docutils literal notranslate"><span class="pre">len</span></code>: the number of points to publish </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a9e815eefaea451e4233b158d4fe7a2ec"></span><code class="descname">HELICS_EXPORT const char* helicsQueryExecute(helics_query query, helics_federate fed)</code></dt>
+<dd><p>Execute a query</p>
+<p>the call will block until the query finishes which may require communication or other delays <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a pointer to a string. the string will remain valid until the query is freed or executed again the return will be nullptr if fed or query is an invalid object, the return string will be “#invalid” if the query itself was invalid </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">query</span></code>: the query object to use in the query </li>
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: a federate to send the query through </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a629ad7534a7b136f52bffb3e228fdb6f"></span><code class="descname">HELICS_EXPORT helics_status helicsQueryExecuteAsync(helics_query query, helics_federate fed)</code></dt>
+<dd><p>Execute a query in a non-blocking call <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics status enumeration with the result of the query specification </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">query</span></code>: the query object to use in the query </li>
+<li><code class="docutils literal notranslate"><span class="pre">fed</span></code>: a federate to send the query through </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1ad39c1a92922696251e499ef42dc765a9"></span><code class="descname">HELICS_EXPORT const char* helicsQueryExecuteComplete(helics_query query)</code></dt>
+<dd><p>complete the return from a query called with /ref helicsExecuteQueryAsync</p>
+<p>the function will block until the query completes /ref isQueryComplete can be called to determine if a query has completed or not <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a pointer to a string. the string will remain valid until the query is freed or executed again the return will be nullptr if query is an invalid object </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">query</span></code>: the query object to </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1a8d6c69e65b02fa8dff524149ab52647e"></span><code class="descname">HELICS_EXPORT void helicsQueryFree(helics_query)</code></dt>
+<dd><p>free the memory associated with a query object </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="helics_8h_1aa2a2e59c9ec3574b7d89d48eb1e07124"></span><code class="descname">HELICS_EXPORT helics_bool_t helicsQueryIsCompleted(helics_query query)</code></dt>
+<dd><p>check if an asynchronously executed query has completed <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>will return helics_true if an asynchronous query has complete or a regular query call was made with a result and false if an asynchronous query has not completed or is invalid </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__getValue_1ga83cf630a5985ee5dd031399f86d6708c"></span><code class="descname">HELICS_EXPORT helics_status helicsSubscriptionGetComplex(helics_subscription sub, double * real, double * imag)</code></dt>
+<dd><p>get a pair of double forming a complex number from a subscriptions <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status value, helics_ok if everything went fine </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">sub</span></code>: the subscription to get the data for </li>
+<li><code class="docutils literal notranslate"><span class="pre">real</span></code>: memory location to place the real part of a value </li>
+<li><code class="docutils literal notranslate"><span class="pre">imag</span></code>: memory location to place the imaginary part of a value </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__getValue_1gaf3e181d286797a373c52b9eb04a9756e"></span><code class="descname">HELICS_EXPORT helics_status helicsSubscriptionGetDouble(helics_subscription sub, double * val)</code></dt>
+<dd><p>get a double value from a subscription <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status value, helics_ok if everything went fine </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">sub</span></code>: the subscription to get the data for </li>
+<li><code class="docutils literal notranslate"><span class="pre">val</span></code>: memory location to place the value </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__getValue_1gab6199fdfce90d5491b43127fa9fbc776"></span><code class="descname">HELICS_EXPORT helics_status helicsSubscriptionGetInteger(helics_subscription sub, int64_t * val)</code></dt>
+<dd><p>get an integer value from a subscription <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status value, helics_ok if everything went fine </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">sub</span></code>: the subscription to get the data for </li>
+<li><code class="docutils literal notranslate"><span class="pre">val</span></code>: memory location to place the value </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__information_1ga27b0586351ddafd93bb26cef2fe0a03d"></span><code class="descname">HELICS_EXPORT helics_status helicsSubscriptionGetKey(helics_subscription sub, char * outputString, int maxlen)</code></dt>
+<dd><p>get the key of a subscription <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration, helics_ok if everything worked </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">sub</span></code>: the subscription to query </li>
+<li><code class="docutils literal notranslate"><span class="pre">outputString</span></code>: a pointer to a memory location to store the resulting string </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum size of string that str can store </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__getValue_1gaeff7580b84be43be43c3747b2bc655bf"></span><code class="descname">HELICS_EXPORT helics_status helicsSubscriptionGetRawValue(helics_subscription sub, void * data, int maxlen, int * actualLength)</code></dt>
+<dd><p>get the raw data for the latest value of a subscription <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status value, helics_ok if everything went fine </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">sub</span></code>: the subscription to get the data for </li>
+<li><code class="docutils literal notranslate"><span class="pre">data</span></code>: the memory location of the data </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum size of information that data can hold </li>
+<li><code class="docutils literal notranslate"><span class="pre">actualLength</span></code>: the actual length of data copied to data </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__getValue_1ga746ebdb706f6672ff5580a730f8cf7c2"></span><code class="descname">HELICS_EXPORT helics_status helicsSubscriptionGetString(helics_subscription sub, char * outputString, int maxStringlen, int * actualLength)</code></dt>
+<dd><p>get a string value from a subscription <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status value, helics_ok if everything went fine </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">sub</span></code>: the subscription to get the data for </li>
+<li><code class="docutils literal notranslate"><span class="pre">str</span></code>: storage for copying a null terminated string </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum size of information that str can hold </li>
+<li><code class="docutils literal notranslate"><span class="pre">the</span></code>: actual length of the string </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__information_1gafb10f7ea88ae0e5dc898def544296f1d"></span><code class="descname">HELICS_EXPORT helics_status helicsSubscriptionGetType(helics_subscription sub, char * outputString, int maxlen)</code></dt>
+<dd><p>get the type of a subscription <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration, helics_ok if everything worked </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">sub</span></code>: the subscription to query </li>
+<li><code class="docutils literal notranslate"><span class="pre">outputString</span></code>: a pointer to a memory location to store the resulting string </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum size of string that str can store </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__information_1gaf67b3078860378da6fe0fcecbcb1048c"></span><code class="descname">HELICS_EXPORT helics_status helicsSubscriptionGetUnits(helics_subscription sub, char * outputString, int maxlen)</code></dt>
+<dd><p>get the units of a subscription <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>a helics_status enumeration, helics_ok if everything worked </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">sub</span></code>: the subscription to query </li>
+<li><code class="docutils literal notranslate"><span class="pre">outputString</span></code>: a pointer to a memory location to store the resulting string </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum size of string that str can store </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__getValue_1ga8daa3fc620088754ebb16304672b1c74"></span><code class="descname">HELICS_EXPORT int helicsSubscriptionGetValueSize(helics_subscription sub)</code></dt>
+<dd><p>get the size of the raw value for subscription <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>the size of the raw data/string in bytes </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__getValue_1gac3b8393730b278a5e6b1f38e01c9f038"></span><code class="descname">HELICS_EXPORT helics_status helicsSubscriptionGetVector(helics_subscription sub, double data[], int maxlen, int * actualSize)</code></dt>
+<dd><p>get a vector from a subscription <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">sub</span></code>: the subscription to get the result for </li>
+<li><code class="docutils literal notranslate"><span class="pre">data</span></code>: the location to store the data </li>
+<li><code class="docutils literal notranslate"><span class="pre">maxlen</span></code>: the maximum size of the vector </li>
+<li><code class="docutils literal notranslate"><span class="pre">actualSize</span></code>: pointer to variable to store the actual size </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__getValue_1ga4293ec6155db8fcf6e0007b4453b1914"></span><code class="descname">HELICS_EXPORT int helicsSubscriptionGetVectorSize(helics_subscription sub)</code></dt>
+<dd><p>get the size of a value for subscription assuming return as an array of doubles <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>the number of double in a return vector </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="ValueFederate_8h_1a75213c050178e50644c535e8e7802274"></span><code class="descname">HELICS_EXPORT helics_bool_t helicsSubscriptionIsUpdated(helics_subscription sub)</code></dt>
+<dd><p>check if a particular subscription was updated <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>true if it has been updated since the last value retrieval </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="ValueFederate_8h_1a4ee94978de21e78b9951d259b6d26f52"></span><code class="descname">HELICS_EXPORT helics_time_t helicsSubscriptionLastUpdateTime(helics_subscription sub)</code></dt>
+<dd><p>get the last time a subscription was updated </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__default__values_1gabd810c1b4af6b8b48ee3bfe1344b0ec6"></span><code class="descname">HELICS_EXPORT helics_status helicsSubscriptionSetDefaultComplex(helics_subscription sub, double real, double imag)</code></dt>
+<dd><p>set the default as a complex number <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_ok if everything was OK </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">sub</span></code>: the subscription to set the default for </li>
+<li><code class="docutils literal notranslate"><span class="pre">real</span></code>: the default real value </li>
+<li><code class="docutils literal notranslate"><span class="pre">imag</span></code>: the default imaginary value </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__default__values_1gade8bf10f1d40c2410ba084860614c10c"></span><code class="descname">HELICS_EXPORT helics_status helicsSubscriptionSetDefaultDouble(helics_subscription sub, double val)</code></dt>
+<dd><p>set the default as a double <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_ok if everything was OK </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">sub</span></code>: the subscription to set the default for </li>
+<li><code class="docutils literal notranslate"><span class="pre">val</span></code>: the default double value </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__default__values_1ga2a4d3cbc4c91f9ece0421133d77970ef"></span><code class="descname">HELICS_EXPORT helics_status helicsSubscriptionSetDefaultInteger(helics_subscription sub, int64_t val)</code></dt>
+<dd><p>set the default as an integer <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_ok if everything was OK </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">sub</span></code>: the subscription to set the default for </li>
+<li><code class="docutils literal notranslate"><span class="pre">val</span></code>: the default integer </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__default__values_1ga4456686c06bf332333f9cf25c4be0e99"></span><code class="descname">HELICS_EXPORT helics_status helicsSubscriptionSetDefaultRaw(helics_subscription sub, const void * data, int inputDataLength)</code></dt>
+<dd><p>set the default as a raw data array <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_ok if everything was OK </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">sub</span></code>: the subscription to set the default for </li>
+<li><code class="docutils literal notranslate"><span class="pre">data</span></code>: a pointer to the raw data to use for the default </li>
+<li><code class="docutils literal notranslate"><span class="pre">len</span></code>: the size of the raw data </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__default__values_1ga4c2204371a239e8eb402a73433525faf"></span><code class="descname">HELICS_EXPORT helics_status helicsSubscriptionSetDefaultString(helics_subscription sub, const char * str)</code></dt>
+<dd><p>set the default as a string <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_ok if everything was OK </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">sub</span></code>: the subscription to set the default for </li>
+<li><code class="docutils literal notranslate"><span class="pre">str</span></code>: a pointer to the default string </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<span class="target" id="group__default__values_1ga3deb59f6bc5162c762b2e81fef9ac4db"></span><code class="descname">HELICS_EXPORT helics_status helicsSubscriptionSetDefaultVector(helics_subscription sub, const double * vectorInput, int vectorlength)</code></dt>
+<dd><p>set the default as a vector of doubles <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>helics_ok if everything was OK </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">sub</span></code>: the subscription to set the default for </li>
+<li><code class="docutils literal notranslate"><span class="pre">data</span></code>: a pointer to an array of double data </li>
+<li><code class="docutils literal notranslate"><span class="pre">len</span></code>: the number of points to publish </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv319helics_clone_filter">
+<span class="target" id="api-data_8h_1a265123836ee11e83dfb77d1f208a52a7a26ffcf3722a8d9950506a826ce734fe8"></span><code class="descname">helics_clone_filter</code> = 5<a class="headerlink" href="#_CPPv319helics_clone_filter" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv320helics_custom_filter">
+<span class="target" id="api-data_8h_1a265123836ee11e83dfb77d1f208a52a7ae11a488cedf4a1b61600499e6bad88a6"></span><code class="descname">helics_custom_filter</code> = 0<a class="headerlink" href="#_CPPv320helics_custom_filter" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv319helics_delay_filter">
+<span class="target" id="api-data_8h_1a265123836ee11e83dfb77d1f208a52a7a1b22c8a7888b50032a1673835a75e34a"></span><code class="descname">helics_delay_filter</code> = 1<a class="headerlink" href="#_CPPv319helics_delay_filter" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv314helics_discard">
+<span class="target" id="api-data_8h_1a6d3ce942465e7dd0945b0f18d1ecd92ca417fa68eaea407ee4d29b974368c5050"></span><code class="descname">helics_discard</code><a class="headerlink" href="#_CPPv314helics_discard" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>the input was discarded and not used for some reason </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv312helics_error">
+<span class="target" id="api-data_8h_1a6d3ce942465e7dd0945b0f18d1ecd92ca766c706090e3e126a7c9dd4d3dc64b77"></span><code class="descname">helics_error</code><a class="headerlink" href="#_CPPv312helics_error" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>the function produced an error </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv318helics_error_state">
+<span class="target" id="api-data_8h_1a6d9f592933e6f8a753a929691173059bae22f4f3bea2300fe312ef1d48e32bc5d"></span><code class="descname">helics_error_state</code><a class="headerlink" href="#_CPPv318helics_error_state" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>error state no core communication is possible but values can be retrieved </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv322helics_execution_state">
+<span class="target" id="api-data_8h_1a6d9f592933e6f8a753a929691173059ba390242c75a6da3c23b810966d7b91681"></span><code class="descname">helics_execution_state</code><a class="headerlink" href="#_CPPv322helics_execution_state" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>entered after the enterExectuationState call has returned </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv312helics_false">
+<span class="target" id="api-data_8h_1a7b64dcf7283404b05d89fd513fe4bf06"></span><em class="property">const</em> helics_bool_t <code class="descname">helics_false</code> = 0<a class="headerlink" href="#_CPPv312helics_false" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv321helics_finalize_state">
+<span class="target" id="api-data_8h_1a6d9f592933e6f8a753a929691173059ba3515c48af9f1057e4d3f87ee64cd4b3f"></span><code class="descname">helics_finalize_state</code><a class="headerlink" href="#_CPPv321helics_finalize_state" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>the federate has finished executing normally final values may be retrieved </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv327helics_initialization_state">
+<span class="target" id="api-data_8h_1a6d9f592933e6f8a753a929691173059ba056c53763a438a9607322f22b1526ec0"></span><code class="descname">helics_initialization_state</code><a class="headerlink" href="#_CPPv327helics_initialization_state" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>entered after the enterInitializationState call has returned </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv323helics_invalid_argument">
+<span class="target" id="api-data_8h_1a6d3ce942465e7dd0945b0f18d1ecd92ca1549f528005ad1e0864081e6ffbf21b2"></span><code class="descname">helics_invalid_argument</code><a class="headerlink" href="#_CPPv323helics_invalid_argument" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>the parameter passed was invalid and unable to be used </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv328helics_invalid_function_call">
+<span class="target" id="api-data_8h_1a6d3ce942465e7dd0945b0f18d1ecd92ca275229756fa6bac1bcac13fc0eb22472"></span><code class="descname">helics_invalid_function_call</code><a class="headerlink" href="#_CPPv328helics_invalid_function_call" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>the call made was invalid in the present state of the calling object </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv321helics_invalid_object">
+<span class="target" id="api-data_8h_1a6d3ce942465e7dd0945b0f18d1ecd92ca682cb657dd775a64b907ff28eec007ff"></span><code class="descname">helics_invalid_object</code><a class="headerlink" href="#_CPPv321helics_invalid_object" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>indicator that the object used was not a valid object </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv331helics_invalid_state_transition">
+<span class="target" id="api-data_8h_1a6d3ce942465e7dd0945b0f18d1ecd92ca31e4f436780a05c322e688471b518042"></span><code class="descname">helics_invalid_state_transition</code><a class="headerlink" href="#_CPPv331helics_invalid_state_transition" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>error issued when an invalid state transition occurred </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv39helics_ok">
+<span class="target" id="api-data_8h_1a6d3ce942465e7dd0945b0f18d1ecd92ca7ee982c5cb804f36faf9bc3a759dae0f"></span><code class="descname">helics_ok</code> = 0<a class="headerlink" href="#_CPPv39helics_ok" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>the function executed successfully </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv325helics_pending_exec_state">
+<span class="target" id="api-data_8h_1a6d9f592933e6f8a753a929691173059baacfda1696664cd78fc5bf079fe48e9d3"></span><code class="descname">helics_pending_exec_state</code><a class="headerlink" href="#_CPPv325helics_pending_exec_state" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>state pending EnterExecution State </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv325helics_pending_init_state">
+<span class="target" id="api-data_8h_1a6d9f592933e6f8a753a929691173059babad27874378f74c9790fa0c1f57813af"></span><code class="descname">helics_pending_init_state</code><a class="headerlink" href="#_CPPv325helics_pending_init_state" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>indicator that the federate is pending entry to initialization state </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv335helics_pending_iterative_time_state">
+<span class="target" id="api-data_8h_1a6d9f592933e6f8a753a929691173059babe727fb1e05c151a9ed7237670814f97"></span><code class="descname">helics_pending_iterative_time_state</code><a class="headerlink" href="#_CPPv335helics_pending_iterative_time_state" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>state that the federate is pending an iterative time request </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv325helics_pending_time_state">
+<span class="target" id="api-data_8h_1a6d9f592933e6f8a753a929691173059ba768505a4564dad78ee8299f2905604c6"></span><code class="descname">helics_pending_time_state</code><a class="headerlink" href="#_CPPv325helics_pending_time_state" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>state that the federate is pending a timeRequest </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv325helics_randomDelay_filter">
+<span class="target" id="api-data_8h_1a265123836ee11e83dfb77d1f208a52a7ab147ec56fd3c86e969d06f1c32b353bb"></span><code class="descname">helics_randomDelay_filter</code> = 2<a class="headerlink" href="#_CPPv325helics_randomDelay_filter" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv324helics_randomDrop_filter">
+<span class="target" id="api-data_8h_1a265123836ee11e83dfb77d1f208a52a7a54c330bb26814d2f10d575e795258324"></span><code class="descname">helics_randomDrop_filter</code> = 3<a class="headerlink" href="#_CPPv324helics_randomDrop_filter" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv321helics_reroute_filter">
+<span class="target" id="api-data_8h_1a265123836ee11e83dfb77d1f208a52a7a1148b769182d2909fa575147f136a483"></span><code class="descname">helics_reroute_filter</code> = 4<a class="headerlink" href="#_CPPv321helics_reroute_filter" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv320helics_startup_state">
+<span class="target" id="api-data_8h_1a6d9f592933e6f8a753a929691173059badf1419587c870aefa4ab86ce6ac87772"></span><code class="descname">helics_startup_state</code> = 0<a class="headerlink" href="#_CPPv320helics_startup_state" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>when created the federate is in startup state </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv317helics_terminated">
+<span class="target" id="api-data_8h_1a6d3ce942465e7dd0945b0f18d1ecd92caf3fc93706dacc8aec184eb34db2e5bf5"></span><code class="descname">helics_terminated</code><a class="headerlink" href="#_CPPv317helics_terminated" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>the federate has terminated and the call cannot be completed </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv319helics_time_epsilon">
+<span class="target" id="api-data_8h_1acab03d7efe6bfb2bab17b634b21375dd"></span><em class="property">const</em> helics_time_t <code class="descname">helics_time_epsilon</code> = 1.0e-9<a class="headerlink" href="#_CPPv319helics_time_epsilon" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv316helics_time_zero">
+<span class="target" id="api-data_8h_1a1191e1f0d66f10e813cd3a5c33719881"></span><em class="property">const</em> helics_time_t <code class="descname">helics_time_zero</code> = 0.0<a class="headerlink" href="#_CPPv316helics_time_zero" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv311helics_true">
+<span class="target" id="api-data_8h_1a298c9a5d3ead0903b0d4bb7a35352ebf"></span><em class="property">const</em> helics_bool_t <code class="descname">helics_true</code> = 1<a class="headerlink" href="#_CPPv311helics_true" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv314helics_warning">
+<span class="target" id="api-data_8h_1a6d3ce942465e7dd0945b0f18d1ecd92ca7067b2e6293065a135b83826022d9a00"></span><code class="descname">helics_warning</code><a class="headerlink" href="#_CPPv314helics_warning" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>the function issued a warning of some kind </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv3N6helics17iterate_if_neededE">
+<span class="target" id="namespacehelics_1ac54892cb4463dbe676bc5c10158abf64a604746cb2927f65c25c7c6fcc5836f59"></span>helics<code class="descclassname">::</code><code class="descname">iterate_if_needed</code> = 2<a class="headerlink" href="#_CPPv3N6helics17iterate_if_neededE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>indicator that the iterations need to continue </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv3N6helics9iteratingE">
+<span class="target" id="namespacehelics_1aba5b181937b4d369629a366f520d3030ac920236de44765917757f8b46bb8ccda"></span>helics<code class="descclassname">::</code><code class="descname">iterating</code> = 2<a class="headerlink" href="#_CPPv3N6helics9iteratingE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>indicator that the iterations need to continue </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv315iteration_error">
+<span class="target" id="api-data_8h_1afffe6600c1ea4416e8fb5e9e41674818ab75ff756eb9c067f624732119f956e91"></span><code class="descname">iteration_error</code><a class="headerlink" href="#_CPPv315iteration_error" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>there was an error </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv316iteration_halted">
+<span class="target" id="api-data_8h_1afffe6600c1ea4416e8fb5e9e41674818a7d4e55b947cde5415028e23c85341b86"></span><code class="descname">iteration_halted</code><a class="headerlink" href="#_CPPv316iteration_halted" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>the federation has halted </p>
+</dd></dl>
+
+<dl class="class">
+<dt id="_CPPv39message_t">
+<span class="target" id="structmessage__t"></span><em class="property">struct </em><code class="descname">message_t</code><a class="headerlink" href="#_CPPv39message_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Message_t mapped to a c compatible structure </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv3N6helics9next_stepE">
+<span class="target" id="namespacehelics_1aba5b181937b4d369629a366f520d3030a8d1255352942ccf23208f5d452b34d18"></span>helics<code class="descclassname">::</code><code class="descname">next_step</code> = 0<a class="headerlink" href="#_CPPv3N6helics9next_stepE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>indicator that the iterations have completed </p>
+</dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv312no_iteration">
+<span class="target" id="api-data_8h_1ab268f4112f029c3784435b413c10c6b8a3bb3d264ff1839fe97783fc0c7ccc835"></span><code class="descname">no_iteration</code><a class="headerlink" href="#_CPPv312no_iteration" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>no iteration is requested </p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../apps/Tracer.html" class="btn btn-neutral" title="Tracer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright © 2017-2018,
+Battelle Memorial Institute; Lawrence Livermore National Security, LLC; Alliance for Sustainable Energy, LLC
+All rights reserved. See LICENSE file and DISCLAIMER for more details..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
